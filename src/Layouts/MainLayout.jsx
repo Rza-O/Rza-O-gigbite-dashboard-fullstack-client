@@ -1,9 +1,14 @@
 import React from 'react';
+import Navbar from '../Components/Shared/Navbar/Navbar';
+import { Outlet } from 'react-router-dom';
+import Footer from '../Components/Shared/Footer/Footer';
 
 const MainLayout = () => {
    return (
       <div>
-         <h2 className='font-nun'>This is the main layout</h2>
+         <Navbar></Navbar>
+         <Outlet />
+         {/* <Footer></Footer> */}
       </div>
    );
 };

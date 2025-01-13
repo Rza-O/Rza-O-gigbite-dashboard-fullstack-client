@@ -1,79 +1,51 @@
-import { assets } from '@/assets/assets';
-import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import logo from '../../../assets/logos/gigbite-high-resolution-logo-grayscale-transparent.png'
+import { Link } from 'react-router-dom';
 
-const Navbar = ({ isDarkMode, setIsDarkMode }) => {
-   const [isScroll, setIsScroll] = useState(false);
-   const sideMenuRef = useRef();
-   const openMenu = () => {
-      sideMenuRef.current.style.transform = 'translateX(-16rem)'
-   }
-   const closeMenu = () => {
-      sideMenuRef.current.style.transform = 'translateX(16rem)'
-   }
-
-   useEffect(() => {
-      window.addEventListener('scroll', () => {
-         if (scrollY > 50) {
-            setIsScroll(true);
-         }
-         else {
-            setIsScroll(false);
-         }
-      }
-      )
-   }, []);
-
+const Navbar = () => {
+   const publicLinks = <>
+      <li><a className=''>Join as Developer</a></li>
+   </>
    return (
-      <div>
-         <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden'>
-            <Image src={assets.header_bg_color} alt='' className='w-full'></Image>
-         </div>
-         <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20" : ""}`}>
-            {/* <a href="">
-               <Image src={assets.logo} className='w-28 cursor-pointer mr-14' alt=''/>
-            </a> */}
-
-            <a href="#top">
-               <h2 className='text-4xl font-semibold'>Reza<span className='text-red-600 text-4xl font-bold'>.</span></h2>
-            </a>
-
-            <ul className={`hidden md:flex items-center gap-6 lg:gap-8 px-12 py-3 rounded-full ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"}`}>
-               <li><a className='font-ovo' href="#top">Home</a></li>
-               <li><a className='font-ovo' href="#about">About</a></li>
-               <li><a className='font-ovo' href="#skills">Skills</a></li>
-               <li><a className='font-ovo' href="#works">Projects</a></li>
-               <li><a className='font-ovo' href="#contact">Contact</a></li>
-            </ul>
-
-            <div className='flex items-center gap-4'>
-
-               <button onClick={() => setIsDarkMode(prev => !prev)} className=''>
-                  <Image src={isDarkMode ? assets.sun_icon : assets.moon_icon} alt='' className='w-6'></Image>
-               </button>
-
-               <a href="#contact" className='hidden md:flex gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 items-center font-ovo dark:border-white/50'>Contact
-                  <Image src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon} className='w-3' alt='' /></a>
-
-               <button className='block md:hidden ml-3' onClick={openMenu}>
-                  <Image src={isDarkMode ? assets.menu_white : assets.menu_black} alt='' className='w-6'></Image>
-               </button>
-            </div>
-
-            {/* Mobile menu */}
-            <ul ref={sideMenuRef} className='flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white'>
-
-               <div className='absolute right-6 top-6' onClick={closeMenu}>
-                  <Image src={isDarkMode ? assets.close_white : assets.close_black} alt='' className='w-5 cursor-pointer'></Image>
+      <div className="bg-primary-dark">
+         <div className='navbar container mx-auto'>
+            <div className="navbar-start">
+               <div className="dropdown">
+                  <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                     <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                           strokeLinecap="round"
+                           strokeLinejoin="round"
+                           strokeWidth="2"
+                           d="M4 6h16M4 12h8m-8 6h16" />
+                     </svg>
+                  </div>
+                  <ul
+                     tabIndex={0}
+                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                     {publicLinks}
+                  </ul>
                </div>
-
-               <li><a className='font-ovo' onClick={closeMenu} href="#top">Home</a></li>
-               <li><a className='font-ovo' onClick={closeMenu} href="#about">About</a></li>
-               <li><a className='font-ovo' onClick={closeMenu} href="#skills">Skills</a></li>
-               <li><a className='font-ovo' onClick={closeMenu} href="#works">My Works</a></li>
-               <li><a className='font-ovo' onClick={closeMenu} href="#contact">Contact me</a></li>
-            </ul>
-         </nav>
+               <Link to='/'><img className='w-32' src={logo} alt="" /></Link>
+            </div>
+            
+            <div className="navbar-end space-x-2">
+               <div className="navbar-center hidden lg:flex">
+                  <ul className="menu menu-horizontal px-1">
+                     {publicLinks}
+                  </ul>
+               </div>
+               <div className='space-x-3'>
+                  <button className='btn btn-ghost '>Login</button>
+                  <button className='btn bg-primary-light border-none'>Register</button>
+               </div>
+            </div>
+         </div>
       </div>
    );
 };
