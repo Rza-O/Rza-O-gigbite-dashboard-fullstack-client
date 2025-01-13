@@ -7,7 +7,7 @@ const Navbar = () => {
       <li><a className=''>Join as Developer</a></li>
    </>
    return (
-      <div className="bg-primary-dark">
+      <div className="bg-primary-dark md:px-4 2xl:px-0">
          <div className='navbar container mx-auto'>
             <div className="navbar-start">
                <div className="dropdown">
