@@ -8,7 +8,8 @@ export default {
     extend: {
       fontFamily: {
         ubuntu: "Ubuntu",
-        nun: 'Nunito'
+        nun: 'Nunito',
+        surfer: "Original Surfer",
       },
       colors: {
         primary: "#9cc6e8",
