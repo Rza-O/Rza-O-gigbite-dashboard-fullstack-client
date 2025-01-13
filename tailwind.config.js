@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        ubuntu: "Ubuntu",
+        nun: 'Nunito'
+      },
       colors: {
         primary: "#9cc6e8",
         "primary-content": "#19476c",
