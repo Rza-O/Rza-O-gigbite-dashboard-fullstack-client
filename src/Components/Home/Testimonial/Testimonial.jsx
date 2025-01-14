@@ -23,7 +23,7 @@ const Testimonial = () => {
          <Title heading={"Testimonials"} subHeading={"Our service is what our customer needed"}></Title>
 
 
-         <div className='container mx-auto border rounded-lg shadow-md bg-foreground p-11'>
+         <div className='container mx-auto border rounded-lg shadow-md bg-primary-light/50 p-11'>
             <Swiper
                pagination={{
                   dynamicBullets: true,
