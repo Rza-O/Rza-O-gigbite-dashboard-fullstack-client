@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../../../assets/logos/primaryLogo.png'
 import logoGray from '../../../assets/logos/logogray.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
    const [isScroll, setIsScroll] = useState(false);
+   const location = useLocation();
+   console.log(location)
 
    useEffect(() => {
       window.addEventListener('scroll', () => {
@@ -22,7 +24,9 @@ const Navbar = () => {
       <li><a className=''>Join as Developer</a></li>
    </>
    return (
-      <div className={`${isScroll ? 'bg-primary-dark text-black font-semibold bg-opacity-35 backdrop-blur-lg shadow-sm dark' : 'text-white'} fixed top-0 z-50 navbar`}>
+      <div
+         className={`${location.pathname === '/' ? `${isScroll ? 'bg-primary-dark text-black font-semibold bg-opacity-35 backdrop-blur-lg shadow-sm dark' : 'text-white'} fixed top-0 z-50 navbar` : `${isScroll ? 'bg-primary-dark text-black font-semibold bg-opacity-35 backdrop-blur-lg shadow-sm dark fixed top-0 z-50' : 'bg-primary-dark text-white font-semibold'} navbar`}
+         `}>
          <div className='navbar container mx-auto md:px-4 2xl:px-0 '>
             <div className="navbar-start">
                <div className="dropdown">
@@ -46,11 +50,16 @@ const Navbar = () => {
                      {publicLinks}
                   </ul>
                </div>
-               {
+               <Link to='/'>
+                  <img
+                     className='w-32'
+                     src={location.pathname === '/' ? (isScroll ? logoGray : logo) : logoGray} alt="Logo" />
+               </Link>
+               {/* {
                   isScroll ? <Link to='/'><img className='w-32' src={logoGray} alt="" /></Link> : <Link to='/'><img className='w-32' src={logo} alt="" /></Link>   
-               }
+               } */}
             </div>
-            
+
             <div className="navbar-end space-x-2">
                <div className="navbar-center hidden lg:flex">
                   <ul className="menu menu-horizontal px-1">
@@ -58,8 +67,12 @@ const Navbar = () => {
                   </ul>
                </div>
                <div className='space-x-3'>
-                  <button className='btn btn-ghost'>Login</button>
-                  <button className={`btn ${isScroll ? 'bg-secondary' : 'bg-primary-light'} border-none`}>Register</button>
+                  <Link to='/login'>
+                     <button className='btn btn-ghost'>Login</button>
+                  </Link>
+                  <Link to='/register'>
+                     <button className={`btn ${isScroll ? 'bg-secondary' : 'bg-primary-light'} border-none`}>Register</button>
+                  </Link>
                </div>
             </div>
          </div>
