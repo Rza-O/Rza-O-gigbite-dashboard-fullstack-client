@@ -1,4 +1,5 @@
 import React from 'react';
+import { Select } from '@headlessui/react'
 
 const Register = () => {
    return (
@@ -34,6 +35,30 @@ const Register = () => {
 
                   <form>
                      <div className="space-y-3">
+                        {/* Profile picture */}
+                        <div className=' p-4  w-full  m-auto rounded-lg flex-grow'>
+                           <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-600 rounded-lg'>
+                              <div className='flex flex-col w-max mx-auto text-center'>
+                                 <label>
+                                    <input
+                                       onChange={(e) => setUploadImage({
+                                          image: e.target.files[0],
+                                          url: URL.createObjectURL(e.target.files[0])
+                                       })}
+                                       className='text-sm cursor-pointer w-36 hidden'
+                                       type='file'
+                                       name='image'
+                                       id='image'
+                                       accept='image/*'
+                                       hidden
+                                    />
+                                    <div className='bg-primary-dark text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-primary-light'>
+                                       Upload Profile Picture  
+                                    </div>
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
                         {/* name */}
                         <div>
                            <label
@@ -64,7 +89,8 @@ const Register = () => {
                               type="email"
                            />
                         </div>
-                        {/* Profile picture */}
+                        
+                        {/* password */}
                         <div className="col-span-full">
                            <label
                               className="mb-3 block font-medium text-black text-sm"
@@ -79,6 +105,25 @@ const Register = () => {
                               type="password"
                            />
                         </div>
+                        {/* role selector */}
+                        <div className="col-span-full">
+                           <label
+                              className="mb-3 block font-medium text-black text-sm"
+                              htmlFor="password"
+                           >
+                              Select Your Role
+                           </label>
+                           <Select
+                              className='block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-black placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm'
+                              name="role" aria-label="Role"
+                              
+                           >
+                              <option value="delayed">Worker</option>
+                              <option value="canceled">Buyer</option>
+                           </Select>
+
+                        </div>
+
                         {/* password */}
                         <div className="col-span-full">
                            <button
