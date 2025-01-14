@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../../assets/logos/gigbite-high-resolution-logo-grayscale-transparent.png'
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+   const [isScroll, setIsScroll] = useState(false);
+
+   useEffect(() => {
+      window.addEventListener('scroll', () => {
+         if (scrollY > 50) {
+            setIsScroll(true)
+         } else {
+            setIsScroll(false)
+         }
+      })
+   }, []);
+
+
+
    const publicLinks = <>
       <li><a className=''>Join as Developer</a></li>
    </>
    return (
-      <div className="bg-primary-dark md:px-4 2xl:px-0">
-         <div className='navbar container mx-auto'>
+      <div className={`${isScroll ? 'bg-primary-dark text-white bg-opacity-35 backdrop-blur-lg shadow-sm dark' : 'bg-primary-dark'} sticky top-0 z-50 `}>
+         <div className='navbar container mx-auto md:px-4 2xl:px-0'>
             <div className="navbar-start">
                <div className="dropdown">
                   <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
