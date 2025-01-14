@@ -3,7 +3,7 @@ import freelancer from '../../../assets/banner/whitehairwoman.mp4'
 
 const Banner = () => {
    return (
-      <div className='relative w-full md:h-[700px]'>
+      <div className='relative w-full h-svh md:h-[700px]'>
          {/* video */}
          <video src={freelancer} autoPlay muted loop className='w-full h-full object-cover'></video>
          {/* dark overlay */}

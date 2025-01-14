@@ -13,12 +13,12 @@ const support = <BiSupport />
 
 const NeedSomething = () => {
    return (
-      <div>
+      <div className='w-11/12 mx-auto'>
          {/* dynamic title section */}
          <Title heading={'Need Something Done?'} subHeading={'Hire our top talents to maximize your workflow '}></Title>
 
          {/* Content */}
-         <div className='w-11/12 mx-auto flex justify-center items-center gap-16 p-11'>
+         <div className=' grid-cols-1 grid md:grid-cols-2 xl:grid-cols-4 justify-center items-center gap-16 p-11'>
             {/* post a job */}
             <Needs icon={network} title={"Post a job"} subtitle={'It’s free and easy to post a job. Simply fill in a title, description.'}></Needs>
             {/* Choose */}
