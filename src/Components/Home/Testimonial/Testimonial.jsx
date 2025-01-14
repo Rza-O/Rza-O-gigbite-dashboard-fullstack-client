@@ -16,10 +16,12 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { RiDoubleQuotesL, RiDoubleQuotesR } from 'react-icons/ri';
 
+
 const Testimonial = () => {
    return (
       <div>
          <Title heading={"Testimonials"} subHeading={"Our service is what our customer needed"}></Title>
+
 
          <div className='container mx-auto border rounded-lg shadow-md bg-foreground p-11'>
             <Swiper
