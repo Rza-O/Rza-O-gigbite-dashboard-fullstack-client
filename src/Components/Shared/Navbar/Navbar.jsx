@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../../assets/logos/gigbite-high-resolution-logo-grayscale-transparent.png'
+import logo from '../../../assets/logos/primaryLogo.png'
+import logoGray from '../../../assets/logos/logogray.png'
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -21,8 +22,8 @@ const Navbar = () => {
       <li><a className=''>Join as Developer</a></li>
    </>
    return (
-      <div className={`${isScroll ? 'bg-primary-dark text-white bg-opacity-35 backdrop-blur-lg shadow-sm dark' : 'bg-primary-dark'} sticky top-0 z-50 `}>
-         <div className='navbar container mx-auto md:px-4 2xl:px-0'>
+      <div className={`${isScroll ? 'bg-primary-dark text-black font-semibold bg-opacity-35 backdrop-blur-lg shadow-sm dark' : 'text-white'} fixed top-0 z-50 navbar`}>
+         <div className='navbar container mx-auto md:px-4 2xl:px-0 '>
             <div className="navbar-start">
                <div className="dropdown">
                   <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -45,7 +46,9 @@ const Navbar = () => {
                      {publicLinks}
                   </ul>
                </div>
-               <Link to='/'><img className='w-32' src={logo} alt="" /></Link>
+               {
+                  isScroll ? <Link to='/'><img className='w-32' src={logoGray} alt="" /></Link> : <Link to='/'><img className='w-32' src={logo} alt="" /></Link>   
+               }
             </div>
             
             <div className="navbar-end space-x-2">
@@ -55,8 +58,8 @@ const Navbar = () => {
                   </ul>
                </div>
                <div className='space-x-3'>
-                  <button className='btn btn-ghost '>Login</button>
-                  <button className='btn bg-primary-light border-none'>Register</button>
+                  <button className='btn btn-ghost'>Login</button>
+                  <button className={`btn ${isScroll ? 'bg-secondary' : 'bg-primary-light'} border-none`}>Register</button>
                </div>
             </div>
          </div>

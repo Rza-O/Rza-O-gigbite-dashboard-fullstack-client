@@ -2,10 +2,10 @@ import React from 'react';
 
 const FAQ = () => {
    return (
-      <div className='md:container mx-auto lg:flex my-8 gap-8 items-center space-y-6 w-11/12 pb-20'>
+      <div className='2xl:container  mx-auto lg:flex my-8 gap-8 items-center space-y-6 w-11/12 pb-20'>
          {/* text part */}
          <div className='space-y-3 w-full text-center lg:w-1/2 '>
-            <h2 className='text-3xl font-bold text-primary-content'>Frequently asked questions</h2>
+            <h2 className='text-5xl font-bold text-primary-content'>Frequently asked questions</h2>
             <p className='font-light max-w-xl'>Find answers to your questions instantly. Need more guidance? Dive into our extensive documentation for all your queries.</p>
          </div>
          {/* accordion */}
