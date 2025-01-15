@@ -50,15 +50,15 @@ export function Sidebar() {
             <List>
                {/* worker */}
                {
-                  role.role === 'worker' && <WorkerSidebar></WorkerSidebar>
+                  role?.role === 'worker' && <WorkerSidebar></WorkerSidebar>
                }
                {/* buyer */}
                {
-                  role.role === 'buyer' && <BuyerSidebar></BuyerSidebar>
+                  role?.role === 'buyer' && <BuyerSidebar></BuyerSidebar>
                }
                {/* Admin */}
                {
-                  role.role === 'admin' && <AdminSidebar></AdminSidebar>
+                  role?.role === 'admin' && <AdminSidebar></AdminSidebar>
                }
             
 
