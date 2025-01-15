@@ -15,7 +15,7 @@ const DashboardLayout = () => {
          </aside>
          <div className='flex-1'>
             <DashboardNavbar></DashboardNavbar>
-            <h3>hello</h3>
+            <Outlet></Outlet>
          </div>
       </div>
    );

@@ -4,7 +4,6 @@ import useUser from '@/Hooks/useUser';
 
 const DashboardNavbar = () => {
    const [userData] = useUser();
-   console.log(userData)
 
    return (
       <div className="drawer">

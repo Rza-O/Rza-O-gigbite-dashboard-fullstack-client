@@ -6,6 +6,8 @@ import Login from '@/Pages/Login/Login';
 import Register from '@/Pages/Register/Register';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import PrivateRoute from './PrivateRoute';
+import DashboardHome from '@/Pages/Dashboard/Common/DashboardHome';
+import BuyerHome from '@/Pages/Dashboard/Buyer/Home/BuyerHome';
 
 const routes = createBrowserRouter([
    {
@@ -32,7 +34,17 @@ const routes = createBrowserRouter([
          <PrivateRoute>
             <DashboardLayout></DashboardLayout>
          </PrivateRoute>,
-      children: []
+      children: [
+         {
+            index: true,
+            element: <PrivateRoute><DashboardHome></DashboardHome></PrivateRoute>
+         },
+         // buyer home
+         {
+            path: 'buyer-home',
+            element: <PrivateRoute><BuyerHome></BuyerHome></PrivateRoute>
+         }
+      ]
    }
 ])
 
