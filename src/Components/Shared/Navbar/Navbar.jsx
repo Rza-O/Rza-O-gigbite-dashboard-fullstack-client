@@ -3,6 +3,7 @@ import logo from '../../../assets/logos/primaryLogo.png'
 import logoGray from '../../../assets/logos/logogray.png'
 import { Link, useLocation } from 'react-router-dom';
 import useAuth from '@/Hooks/useAuth';
+import defaultAvatar from '../../../assets/avatar.png'
 
 const Navbar = () => {
    const { user, logOut } = useAuth();
@@ -85,10 +86,12 @@ const Navbar = () => {
                      <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                            <div className="w-10 rounded-full">
-                              <img
+                              {user?.photoURL ? <img
                                  referrerPolicy='no-referrer'
                                  alt="Tailwind CSS Navbar component"
-                                 src={user?.photoURL} />
+                                 src={user?.photoURL} /> : 
+                                 <img src={defaultAvatar} alt="" />
+                                 }
 
                            </div>
                         </div>

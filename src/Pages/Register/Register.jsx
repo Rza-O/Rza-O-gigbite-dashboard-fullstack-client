@@ -6,12 +6,13 @@ import useAuth from '@/Hooks/useAuth';
 import useAxiosPublic from '@/Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import useAxiosSecure from '@/Hooks/useAxiosSecure';
 
 const Register = () => {
-   const axiosPublic = useAxiosPublic();
+   const axiosSecure = useAxiosSecure();
    const [uploadImage, setUploadImage] = useState({ image: { name: 'Upload button' } });
    const { updateUserProfile, handleEmailRegister } = useAuth();
-   const { register, formState: { errors }, handleSubmit, setValue, clearErrors } = useForm();
+   const { register, formState: { errors }, handleSubmit} = useForm();
    const navigate = useNavigate();
 
    // name
@@ -39,7 +40,7 @@ const Register = () => {
                photoURL: image
             }
          )
-         await axiosPublic.post(`/users/${email}`, userData)
+         await axiosSecure.post(`/users/${email}`, userData)
          toast.success('You have been Signed up')
          navigate('/')
       } catch (error) {
@@ -96,9 +97,6 @@ const Register = () => {
                                                 image: file,
                                                 url: URL.createObjectURL(file),
                                              });
-                                             
-                                             setValue('image', file);
-                                             clearErrors('image');
                                           }
                                        }}
                                        className='text-sm cursor-pointer w-36 hidden'
