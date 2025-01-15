@@ -1,10 +1,15 @@
 import useAuth from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-   const { handleGoogleLogin } = useAuth();
+   const { handleGoogleLogin, handleLogin } = useAuth();
    const axiosSecure = useAxiosSecure();
+   const { register, handleSubmit, formState: { errors } } = useForm();
+   const navigate = useNavigate();
 
    const handleSocialSignIn = async () => {
       try {
@@ -14,13 +19,24 @@ const Login = () => {
             const email = response.user?.email;
             const image = response.user?.photoURL;
             const role = 'worker';
-            const coin = 10;
-            const userData = {name, email, image, role, coin}
+            const userData = { name, email, image, role }
             const { data } = await axiosSecure.post(`/users/${email}`, userData);
             console.log(data)
          }
-         
+
       } catch (error) {
+         console.log(error)
+      }
+   }
+
+   const loginHandler = async (data) => {
+      try {
+         const login = await handleLogin(data.email, data.password);
+         console.log(login)
+         toast.success(`${login?.user?.displayName}, Welcome back!`)
+         // navigate('/')
+      } catch (error) {
+         toast.error('Uh oh! Please check your email & password again...')
          console.log(error)
       }
    }
@@ -51,7 +67,7 @@ const Login = () => {
                      <button
                         onClick={handleSocialSignIn}
                         aria-label="Sign in with Google"
-                        className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-white px-5 py-3 font-medium duration-200 hover:bg-white/50 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+                        className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-white px-5 py-3 font-medium duration-200 hover:bg-white/50 focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
                         type="button"
                      >
                         <GoogleIcon className="size-6" />
@@ -68,7 +84,7 @@ const Login = () => {
                   </div>
 
 
-                  <form>
+                  <form onSubmit={handleSubmit(loginHandler)}>
                      <div className="space-y-3">
                         <div>
                            <label
@@ -78,11 +94,13 @@ const Login = () => {
                               Email
                            </label>
                            <input
-                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
+                              {...register('email', { required: "Must input an email address" })}
+                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-primary-content placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="name"
                               placeholder="Your Email"
                               type="email"
                            />
+                           {errors?.email && <p className='text-red-600 text-xs'>{ errors.email.message}</p>}
                         </div>
                         <div className="col-span-full">
                            <label
@@ -92,15 +110,17 @@ const Login = () => {
                               Password
                            </label>
                            <input
-                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
+                              {...register('password', {required: "Must input a password"})}
+                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-primary-content placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="password"
                               placeholder="Type password here..."
                               type="password"
                            />
+                           {errors?.password && <p className='text-red-600 text-xs'>{errors.password.message}</p>}
                         </div>
                         <div className="col-span-full">
                            <button
-                              className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-neutral-900 px-5 py-3 font-medium text-white duration-200 hover:bg-neutral-700 focus:ring-2 focus:ring-black focus:ring-offset-2"
+                              className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white duration-200 hover:bg-primary-content focus:ring-2 focus:ring-border focus:ring-offset-2"
                               type="submit"
                            >
                               Sign in
@@ -111,7 +131,7 @@ const Login = () => {
                         <p className="mx-auto flex text-center font-medium text-black text-sm leading-tight">
                            Do not have an account?
                            <a
-                              className="ml-auto text-amber-500 hover:text-black"
+                              className="ml-auto text-blue-800 hover:text-black"
                               href="/register"
                            >
                               Sign up now

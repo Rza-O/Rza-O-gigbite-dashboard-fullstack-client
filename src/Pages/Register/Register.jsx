@@ -136,7 +136,7 @@ const Register = () => {
                            </label>
                            <input
                               {...register('name', {required: 'Name is required'})}
-                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
+                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-primary-content placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="name"
                               name='name'
                               placeholder="Your name"
@@ -155,7 +155,7 @@ const Register = () => {
                            <input
                               name='email'
                               {...register('email', {required: true})}
-                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
+                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-primary-content placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="email"
                               placeholder="Your email"
                               type="email"
@@ -183,7 +183,7 @@ const Register = () => {
                                        value.length >= 6 || "Must be at least 6 characters long",
                                  }
                               })}
-                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
+                              className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-primary-content placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="password"
                               placeholder="Type password here..."
                               type="password"
