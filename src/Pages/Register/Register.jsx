@@ -5,12 +5,14 @@ import { imageUpload } from '@/API/utils';
 import useAuth from '@/Hooks/useAuth';
 import useAxiosPublic from '@/Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
    const axiosPublic = useAxiosPublic();
    const [uploadImage, setUploadImage] = useState({ image: { name: 'Upload button' } });
    const { updateUserProfile, handleEmailRegister } = useAuth();
    const { register, handleSubmit } = useForm();
+   const navigate = useNavigate();
 
    // name
    // email
@@ -27,7 +29,7 @@ const Register = () => {
       
 
       // make the data
-      const userData = { ...data, image }
+      const userData = {name, image, email, role }
       console.log(userData)
       try {
          const result = await handleEmailRegister(email, password);
@@ -39,6 +41,7 @@ const Register = () => {
          )
          await axiosPublic.post(`/users/${email}`, userData)
          toast.success('You have been Signed up')
+         navigate('/')
       } catch (error) {
          console.log(error);
       }
