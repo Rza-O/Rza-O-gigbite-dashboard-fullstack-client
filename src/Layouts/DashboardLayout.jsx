@@ -1,6 +1,6 @@
 
 
-import { Sidebar } from '@/Components/Dashboard/Shared/Sidebar/Sidebar';
+import { Sidebar } from '@/Components/Dashboard/Shared/Sidebar/Common/Sidebar';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
