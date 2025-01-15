@@ -42,10 +42,10 @@ const DashboardNavbar = () => {
                         <li>Role: <span className='font-semibold'>Worker</span></li>
                         <li>Name: <span className='font-semibold'>Sherlock Holmes</span></li>
                      </div> */}
-                     <div className='hidden lg:flex'>
-                        <li><a>Coin: 50🪙</a></li>
-                        <li><a>Role: Buyer</a></li>
-                        <li><a>Name: Sherlock holmes</a></li>
+                     <div className='hidden lg:flex font-ubuntu'>
+                        <li><a>Coin: <span className='font-semibold'>50🪙</span></a></li>
+                        <li><a>Role: <span className='font-semibold'>Buyer</span></a></li>
+                        <li><a>Name: <span className='font-semibold'>Sherlock holmes</span></a></li>
                      </div>
 
                      {/* avatar */}
@@ -66,24 +66,37 @@ const DashboardNavbar = () => {
                         </ul>
                      </div>
                      {/* <li><a>Navbar Item 1</a></li> */}
-                     <button className="btn btn-ghost btn-circle">
-                        <div className="indicator">
-                           <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-5 w-5"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor">
-                              <path
-                                 strokeLinecap="round"
-                                 strokeLinejoin="round"
-                                 strokeWidth="2"
-                                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                           </svg>
-                           <span className="badge badge-xs badge-primary indicator-item"></span>
-                           
+                     
+                        <div className="dropdown dropdown-end">
+                           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                              <div className="indicator">
+                              <svg
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 className="h-5 w-5"
+                                 fill="none"
+                                 viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                 <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                              </svg>
+                              <span className="badge badge-xs badge-secondary indicator-item"></span>
+                              </div>
+                           </div>
+                           <div
+                              tabIndex={0}
+                              className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
+                              <div className="card-body">
+                                 <span className="text-lg font-bold">8 Items</span>
+                                 <span className="text-info">Subtotal: $999</span>
+                                 <div className="card-actions">
+                                    <button className="btn btn-primary btn-block">View cart</button>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
-                     </button>
                      {/* <li><a>Navbar Item 2</a></li> */}
                      
                   </ul>
