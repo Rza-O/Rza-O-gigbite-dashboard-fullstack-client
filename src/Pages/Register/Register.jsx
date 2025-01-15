@@ -1,7 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Select } from '@headlessui/react'
+import { useForm } from 'react-hook-form';
+import { imageUpload } from '@/API/utils';
+import useAuth from '@/Hooks/useAuth';
+import useAxiosPublic from '@/Hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+   const axiosPublic = useAxiosPublic();
+   const [uploadImage, setUploadImage] = useState({ image: { name: 'Upload button' } });
+   const { updateUserProfile, handleEmailRegister } = useAuth();
+   const { register, handleSubmit } = useForm();
+
+   // name
+   // email
+   // image
+   // role
+
+   const handleRegister = async (data) => {
+      const name = data.name;
+      const email = data.email;
+      const role = data.role;
+      const password = data.password;
+      const photo = uploadImage.image;
+      const image = await imageUpload(photo);
+      
+
+      // make the data
+      const userData = { ...data, image }
+      console.log(userData)
+      try {
+         const result = await handleEmailRegister(email, password);
+         await updateUserProfile(
+            {
+               displayName: name,
+               photoURL: image
+            }
+         )
+         await axiosPublic.post(`/users/${email}`, userData)
+         toast.success('You have been Signed up')
+      } catch (error) {
+         console.log(error);
+      }
+   }
+
+
    return (
       <div className=''>
          <section className=" relative flex size-full max-h-full items-center justify-center bg-[url('https://pixabay.com/get/g584c6d5ae25b7f77952eb8be7d25b9dcb7c54d5b40f7b1da0a9d2133d1b9d997632637610782567410520ecd78c3f92dbc85db6e13e0203371349e875c0cb546_1920.jpg')] bg-cover px-2 py-6 md:px-12 lg:justify-center lg:p-12 ">
@@ -33,14 +76,15 @@ const Register = () => {
                   </div>
 
 
-                  <form>
+                  <form onSubmit={handleSubmit(handleRegister)}>
                      <div className="space-y-3">
                         {/* Profile picture */}
                         <div className=' p-4  w-full  m-auto rounded-lg flex-grow'>
-                           <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-600 rounded-lg'>
+                           <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
                               <div className='flex flex-col w-max mx-auto text-center'>
                                  <label>
                                     <input
+                                       {...register('image')}
                                        onChange={(e) => setUploadImage({
                                           image: e.target.files[0],
                                           url: URL.createObjectURL(e.target.files[0])
@@ -52,13 +96,22 @@ const Register = () => {
                                        accept='image/*'
                                        hidden
                                     />
-                                    <div className='bg-primary-dark text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-primary-light'>
-                                       Upload Profile Picture  
+                                    <div className='bg-lime-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500'>
+                                       {uploadImage?.image?.name}
                                     </div>
                                  </label>
                               </div>
                            </div>
                         </div>
+                        {
+                           uploadImage && uploadImage.image?.size && (
+                              <div className='flex items-center gap-5'>
+                                 <img src={uploadImage?.url} className='w-20 mx-auto' alt="" />
+                                 {/* <p>Image Size: {uploadImage?.image?.size} Bytes</p> */}
+                              </div>
+                           )
+                        }
+
                         {/* name */}
                         <div>
                            <label
@@ -68,8 +121,10 @@ const Register = () => {
                               Name
                            </label>
                            <input
+                              {...register('name')}
                               className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="name"
+                              name='name'
                               placeholder="Your name"
                               type="text"
                            />
@@ -83,13 +138,15 @@ const Register = () => {
                               Email
                            </label>
                            <input
+                              name='email'
+                              {...register('email')}
                               className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="email"
                               placeholder="Your email"
                               type="email"
                            />
                         </div>
-                        
+
                         {/* password */}
                         <div className="col-span-full">
                            <label
@@ -99,6 +156,7 @@ const Register = () => {
                               Password
                            </label>
                            <input
+                              {...register('password')}
                               className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="password"
                               placeholder="Type password here..."
@@ -114,17 +172,18 @@ const Register = () => {
                               Select Your Role
                            </label>
                            <Select
+                              {...register('role')}
                               className='block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-black placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm'
                               name="role" aria-label="Role"
-                              
+
                            >
-                              <option value="delayed">Worker</option>
-                              <option value="canceled">Buyer</option>
+                              <option value="worker">Worker</option>
+                              <option value="buyer">Buyer</option>
                            </Select>
 
                         </div>
 
-                        {/* password */}
+                        {/* submit */}
                         <div className="col-span-full">
                            <button
                               className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-neutral-900 px-5 py-3 font-medium text-white duration-200 hover:bg-neutral-700 focus:ring-2 focus:ring-black focus:ring-offset-2"
