@@ -24,11 +24,68 @@ const DashboardNavbar = () => {
                   </label>
                </div>
                {/* <div className="mx-2 flex-1 px-2">Navbar Title</div> */}
-               <div className="  navbar-end flex-1">
-                  <ul className="menu menu-horizontal">
+               <div className=" navbar-end flex-1">
+                  <ul className="menu menu-horizontal flex items-center">
                      {/* Navbar menu content here */}
-                     <li><a>Navbar Item 1</a></li>
-                     <li><a>Navbar Item 2</a></li>
+
+                     {/* content */}
+                     {/* <div>
+                        <div className='flex'>
+                           <p>Coin: </p>
+                           <p>Role: </p>
+                           <p>User Name</p>
+                        </div>
+                        <div></div>
+                     </div> */}
+                     {/* <div className='flex gap-3 mr-3'>
+                        <li>Coin: <span className='font-semibold'>50🪙</span></li>
+                        <li>Role: <span className='font-semibold'>Worker</span></li>
+                        <li>Name: <span className='font-semibold'>Sherlock Holmes</span></li>
+                     </div> */}
+                     <div className='hidden lg:flex'>
+                        <li><a>Coin: 50🪙</a></li>
+                        <li><a>Role: Buyer</a></li>
+                        <li><a>Name: Sherlock holmes</a></li>
+                     </div>
+
+                     {/* avatar */}
+                     <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                           <div className="w-10 rounded-full">
+                              <img
+                                 alt="Tailwind CSS Navbar component"
+                                 src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                           </div>
+                        </div>
+                        <ul
+                           tabIndex={0}
+                           className=" lg:hidden menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                           <li><a>Coin: 50🪙</a></li>
+                           <li><a>Role: Buyer</a></li>
+                           <li><a>Name: Sherlock holmes</a></li>
+                        </ul>
+                     </div>
+                     {/* <li><a>Navbar Item 1</a></li> */}
+                     <button className="btn btn-ghost btn-circle">
+                        <div className="indicator">
+                           <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor">
+                              <path
+                                 strokeLinecap="round"
+                                 strokeLinejoin="round"
+                                 strokeWidth="2"
+                                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                           </svg>
+                           <span className="badge badge-xs badge-primary indicator-item"></span>
+                           
+                        </div>
+                     </button>
+                     {/* <li><a>Navbar Item 2</a></li> */}
+                     
                   </ul>
                </div>
             </div>
