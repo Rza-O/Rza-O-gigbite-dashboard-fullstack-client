@@ -11,7 +11,7 @@ const Register = () => {
    const axiosPublic = useAxiosPublic();
    const [uploadImage, setUploadImage] = useState({ image: { name: 'Upload button' } });
    const { updateUserProfile, handleEmailRegister } = useAuth();
-   const { register, handleSubmit } = useForm();
+   const { register, formState: { errors }, handleSubmit, setValue, clearErrors } = useForm();
    const navigate = useNavigate();
 
    // name
@@ -46,6 +46,7 @@ const Register = () => {
          console.log(error);
       }
    }
+   
 
 
    return (
@@ -83,15 +84,23 @@ const Register = () => {
                      <div className="space-y-3">
                         {/* Profile picture */}
                         <div className=' p-4  w-full  m-auto rounded-lg flex-grow'>
-                           <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
+                           <div className='file_upload px-5 py-3 relative border-4 border-dotted border-border rounded-lg'>
                               <div className='flex flex-col w-max mx-auto text-center'>
                                  <label>
                                     <input
-                                       {...register('image')}
-                                       onChange={(e) => setUploadImage({
-                                          image: e.target.files[0],
-                                          url: URL.createObjectURL(e.target.files[0])
-                                       })}
+                                       {...register('image', {required: "Image is required"})}
+                                       onChange={(e) => {
+                                          const file = e.target.files[0];
+                                          if (file) {
+                                             setUploadImage({
+                                                image: file,
+                                                url: URL.createObjectURL(file),
+                                             });
+                                             
+                                             setValue('image', file);
+                                             clearErrors('image');
+                                          }
+                                       }}
                                        className='text-sm cursor-pointer w-36 hidden'
                                        type='file'
                                        name='image'
@@ -99,10 +108,12 @@ const Register = () => {
                                        accept='image/*'
                                        hidden
                                     />
-                                    <div className='bg-lime-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500'>
+                                    
+                                    <div className='bg-primary-dark text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-primary-content transition-colors duration-300 required'>
                                        {uploadImage?.image?.name}
                                     </div>
                                  </label>
+                                 {errors?.image && <p className='text-red-600 text-xs'>{ errors?.image?.message}</p>} 
                               </div>
                            </div>
                         </div>
@@ -124,13 +135,14 @@ const Register = () => {
                               Name
                            </label>
                            <input
-                              {...register('name')}
+                              {...register('name', {required: 'Name is required'})}
                               className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="name"
                               name='name'
                               placeholder="Your name"
                               type="text"
                            />
+                           {errors?.name && <p className='text-red-600 text-xs'>{errors.name.message}</p>} 
                         </div>
                         {/* email */}
                         <div>
@@ -142,12 +154,13 @@ const Register = () => {
                            </label>
                            <input
                               name='email'
-                              {...register('email')}
+                              {...register('email', {required: true})}
                               className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="email"
                               placeholder="Your email"
                               type="email"
                            />
+                           {errors?.email && <p className='text-red-600 text-xs'>Email is required</p>} 
                         </div>
 
                         {/* password */}
@@ -159,12 +172,23 @@ const Register = () => {
                               Password
                            </label>
                            <input
-                              {...register('password')}
+                              {...register('password', {
+                                 required: "Password is required!",
+                                 validate: {
+                                    hasUpperCase: (value) =>
+                                       /[A-Z]/.test(value) || "Must include at least one uppercase letter",
+                                    hasLoweCase: (value) =>
+                                       /[a-z]/.test(value) || "Must include at least one lowercase letter",
+                                    isLongEnough: (value) =>
+                                       value.length >= 6 || "Must be at least 6 characters long",
+                                 }
+                              })}
                               className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-amber-500 placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="password"
                               placeholder="Type password here..."
                               type="password"
                            />
+                           {errors.password && <p className='text-xs text-red-500'>{errors.password.message}</p>}
                         </div>
                         {/* role selector */}
                         <div className="col-span-full">
@@ -175,21 +199,22 @@ const Register = () => {
                               Select Your Role
                            </label>
                            <Select
-                              {...register('role')}
+                              {...register('role', {required: "You need to choose a role"})}
                               className='block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-black placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm'
                               name="role" aria-label="Role"
-
+                              defaultValue=''
                            >
+                              <option value="" disabled hidden>Choose your role</option>
                               <option value="worker">Worker</option>
                               <option value="buyer">Buyer</option>
                            </Select>
-
+                           {errors.role && <p className='text-xs text-red-500'>{errors.role.message}</p>}
                         </div>
 
                         {/* submit */}
                         <div className="col-span-full">
                            <button
-                              className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-neutral-900 px-5 py-3 font-medium text-white duration-200 hover:bg-neutral-700 focus:ring-2 focus:ring-black focus:ring-offset-2"
+                              className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white duration-200 hover:bg-primary-content focus:ring-2 focus:ring-border focus:ring-offset-2"
                               type="submit"
                            >
                               Sign Up
@@ -201,7 +226,7 @@ const Register = () => {
                         <p className="mx-auto flex text-center font-medium text-black text-sm leading-tight">
                            Already have an account?
                            <a
-                              className="ml-auto text-amber-500 hover:text-black"
+                              className="ml-auto text-blue-800 hover:text-black"
                               href="/login"
                            >
                               Sign In now
