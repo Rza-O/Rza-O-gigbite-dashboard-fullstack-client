@@ -25,7 +25,6 @@ import WorkerSidebar from "../Worker/WorkerSidebar";
 import BuyerSidebar from "../Buyer/BuyerSidebar";
 import AdminSidebar from "../Admin/AdminSidebar";
 import useRole from "@/Hooks/useRole";
-import Loading from "@/Components/Shared/LoadingSpinner/Loading";
 import useAuth from "@/Hooks/useAuth";
 import toast from "react-hot-toast";
 
@@ -35,7 +34,6 @@ export function Sidebar() {
 
    const [role, isLoading] = useRole();
 
-   if (isLoading) return <Loading></Loading>
 
    const handleLogOut = async () => {
       await logOut();
