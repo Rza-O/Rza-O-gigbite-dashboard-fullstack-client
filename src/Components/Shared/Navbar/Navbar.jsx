@@ -30,7 +30,7 @@ const Navbar = () => {
    </>
 
    const privateLinks = <>
-      <li><Link>Dashboard</Link></li>
+      <li><Link to='/dashboard'>Dashboard</Link></li>
       <li><Link to='https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Rza-O'>Join as Developer</Link></li>
       <li><Link>Coins</Link></li>
    </>
