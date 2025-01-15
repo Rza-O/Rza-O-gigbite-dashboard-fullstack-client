@@ -27,6 +27,7 @@ import AdminSidebar from "../Admin/AdminSidebar";
 import useRole from "@/Hooks/useRole";
 import useAuth from "@/Hooks/useAuth";
 import toast from "react-hot-toast";
+import InteractiveHoverButton from "@/Components/ui/interactive-hover-button";
 
 export function Sidebar() {
    const { logOut } = useAuth();
@@ -78,6 +79,11 @@ export function Sidebar() {
                   Log Out
                </ListItem>
             </List>
+            <div className="left-16 fixed bottom-10">
+               <Link to='/'>
+                  <InteractiveHoverButton text={'Home'} className='bg-secondary'></InteractiveHoverButton>
+               </Link>
+            </div>
          </Card>
       </div>
    );

@@ -11,7 +11,7 @@ const AdminSidebar = () => {
                <ListItemPrefix>
                   <HomeIcon className="h-5 w-5" />
                </ListItemPrefix>
-               Home
+               Admin Home
             </ListItem>
          </Link>
          <ListItem>

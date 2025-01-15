@@ -11,7 +11,7 @@ const WorkerSidebar = () => {
                <ListItemPrefix>
                   <HomeIcon className="h-5 w-5" />
                </ListItemPrefix>
-               Home
+               Worker Home
             </ListItem>
          </Link>
          <ListItem>

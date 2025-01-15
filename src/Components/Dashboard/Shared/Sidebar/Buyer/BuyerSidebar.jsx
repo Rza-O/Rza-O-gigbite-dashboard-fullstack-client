@@ -12,7 +12,7 @@ const BuyerSidebar = () => {
                <ListItemPrefix>
                   <HomeIcon className="h-5 w-5" />
                </ListItemPrefix>
-               Home
+               Buyer Home
             </ListItem>
          </Link>
          <ListItem>
