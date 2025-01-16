@@ -15,12 +15,14 @@ const BuyerSidebar = () => {
                Buyer Home
             </ListItem>
          </Link>
-         <ListItem>
-            <ListItemPrefix>
-               <BriefcaseIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Add New Tasks
-         </ListItem>
+         <Link to='/dashboard/add-task'>
+            <ListItem>
+               <ListItemPrefix>
+                  <BriefcaseIcon className="h-5 w-5" />
+               </ListItemPrefix>
+               Add New Tasks
+            </ListItem>
+         </Link>
          <ListItem>
             <ListItemPrefix>
                <DocumentCheckIcon className="h-5 w-5" />

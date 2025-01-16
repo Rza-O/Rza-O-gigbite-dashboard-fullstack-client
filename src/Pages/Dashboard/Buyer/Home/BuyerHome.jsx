@@ -1,3 +1,4 @@
+import StatsCard from '@/Components/Dashboard/Buyer/Home/StatsCard';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
@@ -7,7 +8,7 @@ const BuyerHome = () => {
          <Helmet>
             <title>Dashboard | Home</title>
          </Helmet>
-         this is Buyer Home
+         <StatsCard></StatsCard>
       </div>
    );
 };

@@ -8,6 +8,7 @@ import DashboardLayout from '@/Layouts/DashboardLayout';
 import PrivateRoute from './PrivateRoute';
 import DashboardHome from '@/Pages/Dashboard/Common/DashboardHome';
 import BuyerHome from '@/Pages/Dashboard/Buyer/Home/BuyerHome';
+import AddTaskBuyer from '@/Pages/Dashboard/Buyer/AddTask/AddTask';
 
 const routes = createBrowserRouter([
    {
@@ -43,6 +44,11 @@ const routes = createBrowserRouter([
          {
             path: 'buyer-home',
             element: <PrivateRoute><BuyerHome></BuyerHome></PrivateRoute>
+         },
+         // Add task
+         {
+            path: 'add-task',
+            element: <PrivateRoute><AddTaskBuyer></AddTaskBuyer></PrivateRoute>
          }
       ]
    }
