@@ -2,6 +2,11 @@ import React from 'react';
 import { Sidebar } from '../Sidebar/Common/Sidebar';
 import useUser from '@/Hooks/useUser';
 
+import { GrUserAdmin } from 'react-icons/gr';
+import { FaUserAlt } from 'react-icons/fa';
+import { FaUserGear } from "react-icons/fa6";
+import { CiCoinInsert } from "react-icons/ci";
+
 const DashboardNavbar = () => {
    const [userData] = useUser();
 
@@ -46,9 +51,11 @@ const DashboardNavbar = () => {
                         <li>Name: <span className='font-semibold'>Sherlock Holmes</span></li>
                      </div> */}
                      <div className='hidden lg:flex font-ubuntu'>
-                        <li><a>Name: <span className='font-semibold'>{userData?.name}</span></a></li>
-                        <li><a>Role: <span className='font-semibold'>{userData?.role}</span></a></li>
-                        {userData?.role === 'admin' || <li><a>Coin: <span className='font-semibold'>{userData?.coin}🪙</span></a></li>}
+                        <li><a><FaUserAlt className='text-lg' /> <span className='font-semibold'>{userData?.name}</span></a></li>
+
+                        <li><a><FaUserGear className='text-xl' /> <span className='font-semibold uppercase'>{userData?.role}</span></a></li>
+
+                        {userData?.role === 'admin' || <li><a>🪙<span className='font-semibold'>{userData?.coin}</span></a></li>}
                      </div>
 
                      {/* avatar */}

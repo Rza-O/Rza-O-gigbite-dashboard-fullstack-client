@@ -3,9 +3,10 @@ import DashboardTitle from '@/Components/Dashboard/Shared/Title/DashboardTitle';
 import useAuth from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 
 const MyTasks = () => {
+   let [isOpen, setIsOpen] = useState(false)
    const { user, loading } = useAuth();
    const axiosSecure = useAxiosSecure();
    const { data: tasks = [], isLoading, refetch } = useQuery({
@@ -35,10 +36,11 @@ const MyTasks = () => {
                <tbody>
                   {/* row  */}
                   {
-                     tasks.map((task, idx) => <MyTaskTableRow idx={idx} key={task._id} task={task} refetch={refetch}></MyTaskTableRow>)
+                     tasks.map((task, idx) => <MyTaskTableRow setIsOpen={setIsOpen} idx={idx} key={task._id} task={task} refetch={refetch}></MyTaskTableRow>)
                   }
                </tbody>
             </table>
+            
          </div>
       </div>
    );
