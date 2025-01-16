@@ -19,8 +19,8 @@ const StatCard = ({ title, value, percentage, isIncrease }) => {
 
 const StatsCard = () => {
    return (
-      <div>
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className='p-6'>
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto">
             <StatCard title="Task Count" value="50" percentage="45.0" isIncrease />
             <StatCard title="Pending Tasks" value="20" percentage="12.5" />
             <StatCard title="Total Paid" value="€500" percentage="35.2" isIncrease />
