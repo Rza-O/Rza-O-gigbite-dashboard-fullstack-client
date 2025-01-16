@@ -24,12 +24,14 @@ const WorkerSidebar = () => {
             </ListItem>
          </Link>
 
-         <ListItem>
-            <ListItemPrefix>
-               <DocumentCheckIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            My Submission
-         </ListItem>
+         <Link to='/dashboard/my-submissions'>
+            <ListItem>
+               <ListItemPrefix>
+                  <DocumentCheckIcon className="h-5 w-5" />
+               </ListItemPrefix>
+               My Submission
+            </ListItem>
+         </Link>
 
          <ListItem>
             <ListItemPrefix>

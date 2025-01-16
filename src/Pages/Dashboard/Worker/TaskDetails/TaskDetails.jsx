@@ -47,6 +47,7 @@ const TaskDetails = () => {
       // sending data to the db
       try {
          const { data } = await axiosSecure.post('/work-submit', submissionData);
+         refetch();
          console.log(data)
          Swal.fire({
             title: "You have submitted successfully!",
