@@ -2,7 +2,8 @@ import { format } from 'date-fns';
 import { Pencil, Trash2 } from 'lucide-react';
 import React from 'react';
 
-const MyTaskTableRow = ({ task, refetch, idx, setIsOpen }) => {
+const MyTaskTableRow = ({ task, refetch, idx, setIsOpen, setTask }) => {
+
 
    return (
       <>
@@ -15,7 +16,10 @@ const MyTaskTableRow = ({ task, refetch, idx, setIsOpen }) => {
                <span className="hover:text-red-700 cursor-pointer">
                   <Trash2 className="w-5" />
                </span>
-               <span onClick={() => setIsOpen(true)} className="hover:text-secondary-dark cursor-pointer">
+               <span onClick={() => {
+                  setTask(task)
+                  setIsOpen(true)
+               }} className="hover:text-secondary-dark cursor-pointer">
                   <Pencil className="w-5" />
                </span>
             </td>
