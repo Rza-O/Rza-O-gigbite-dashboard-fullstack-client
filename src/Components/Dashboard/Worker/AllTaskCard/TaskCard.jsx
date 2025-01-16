@@ -16,7 +16,7 @@ import { format } from "date-fns";
 
 const TaskCard = ({ task }) => {
    console.log(task)
-   const { task_title, buyer, deadline, payable_amount, required_workers, image } = task || {};
+   const { task_title, buyer, deadline, payable_amount, required_workers, image, _id } = task || {};
    return (
       <div className="max-w-xs bg-white rounded-lg shadow-md overflow-hidden">
          <img
@@ -50,7 +50,7 @@ const TaskCard = ({ task }) => {
             </div>
             {/* <Link to={`/food/${_id}`}> */}
             <div className='mt-4 flex justify-end'>
-               <Link to={`/dashboard/task/1`}>
+               <Link to={`/dashboard/task/${_id}`}>
                   <Button_v5 Icon={<LuBookOpenText />}>View Details</Button_v5>
                </Link>
             </div>
