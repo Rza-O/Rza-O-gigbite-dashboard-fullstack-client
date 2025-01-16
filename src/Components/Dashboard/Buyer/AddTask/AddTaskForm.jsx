@@ -2,14 +2,58 @@ import "react-datepicker/dist/react-datepicker.css";
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import DatePicker from "react-datepicker";
+import { imageUpload } from "@/API/utils";
+import useAuth from "@/Hooks/useAuth";
+import useAxiosSecure from "@/Hooks/useAxiosSecure";
+import useUser from "@/Hooks/useUser";
+import toast from "react-hot-toast";
 
 const AddTaskForm = () => {
+   const { user } = useAuth();
+   const [userData, refetch] = useUser();
+   const axiosSecure = useAxiosSecure();
    const [uploadImage, setUploadImage] = useState({ image: { name: 'Upload button' } });
    const [startDate, setStartDate] = useState(new Date());
    const { register, handleSubmit, formState: { errors } } = useForm();
    const handleAddTask = async (data) => {
       console.log(data)
+      const payable_amount = parseInt(data.payable_amount)
+      const required_workers = parseInt(data.required_workers)
+      const totalCost = required_workers * payable_amount;
+      if (totalCost > userData.coin) {
+         return toast.error('insufficient coin')
+      }
+      const photo = uploadImage.image;
+      const image = await imageUpload(photo);
+      const taskData = {
+         ...data,
+         required_workers,
+         payable_amount,
+         image,
+         totalCost,
+         deadline: startDate,
+         buyer: {
+            buyer_email: user?.email,
+            buyer_name: user?.displayName
+         }
+      }
+
+      // sending data to db
+      try {
+         const { data } = await axiosSecure.post('/task', taskData);
+         toast.success('Task added successfully')
+         refetch();
+         console.log(data)
+      } catch (error) {
+         console.log(error)
+      }
+
+
+
    }
+
+
+
    return (
       <div className="w-11/12 mx-auto">
          <form onSubmit={handleSubmit(handleAddTask)}>
@@ -89,6 +133,8 @@ const AddTaskForm = () => {
                      name='required_workers'
                      placeholder="amount of workers needed"
                      type="number"
+                     step='1'
+                     min='1'
                   />
                   {errors?.required_workers && <p className='text-red-600 text-xs'>{errors.required_workers.message}</p>}
                </div>
@@ -109,11 +155,13 @@ const AddTaskForm = () => {
                      name='payable_amount'
                      placeholder="Amount to be paid for each worker..."
                      type="number"
+                     step='1'
+                     min='1'
                   />
                   {errors?.name && <p className='text-red-600 text-xs'>{errors.name.message}</p>}
                </div>
-               
-               
+
+
 
                {/* Task details */}
                <div>
@@ -128,7 +176,7 @@ const AddTaskForm = () => {
                      className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-primary-content placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                      id="task_details"
                      name='task_details'
-                     placeholder="write a short task details.."
+                     placeholder="write your task details.."
                      type="text"
                   />
                   {errors?.task_details && <p className='text-red-600 text-xs'>{errors.task_details.message}</p>}
