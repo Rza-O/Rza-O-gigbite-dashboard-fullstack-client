@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const BuyerSidebar = () => {
    return (
       <div>
-         <Link to='/'>
+         <Link to='/dashboard'>
             <ListItem>
                <ListItemPrefix>
                   <HomeIcon className="h-5 w-5" />
@@ -15,6 +15,7 @@ const BuyerSidebar = () => {
                Buyer Home
             </ListItem>
          </Link>
+
          <Link to='/dashboard/add-task'>
             <ListItem>
                <ListItemPrefix>
@@ -23,12 +24,16 @@ const BuyerSidebar = () => {
                Add New Tasks
             </ListItem>
          </Link>
-         <ListItem>
-            <ListItemPrefix>
-               <DocumentCheckIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            My Task's
-         </ListItem>
+
+         <Link to='/dashboard/my-tasks'>
+            <ListItem>
+               <ListItemPrefix>
+                  <DocumentCheckIcon className="h-5 w-5" />
+               </ListItemPrefix>
+               My Tasks
+            </ListItem>
+         </Link>
+
          <ListItem>
             <ListItemPrefix>
                <BanknotesIcon className="h-5 w-5" />
@@ -38,6 +43,7 @@ const BuyerSidebar = () => {
                <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
             </ListItemSuffix>
          </ListItem>
+
          <ListItem>
             <ListItemPrefix>
                <Landmark className="h-5 w-5" />
