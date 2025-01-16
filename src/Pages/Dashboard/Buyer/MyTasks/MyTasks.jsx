@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const MyTasks = () => {
    const { register, handleSubmit } = useForm();
@@ -42,11 +43,35 @@ const MyTasks = () => {
          console.log(error)
       }
       
-
-
    }
 
-
+   // delete a task
+   const handleDelete = async (id) => {
+      Swal.fire({
+         title: "Are you sure?",
+         text: "You won't be able to revert this!",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#3085d6",
+         cancelButtonColor: "#d33",
+         confirmButtonText: "Yes, delete it!"
+      }).then(async (result) => {
+         if (result.isConfirmed) {
+            try {
+               const { data } = await axiosSecure.delete(`/task/${id}`);
+               console.log(data);
+               refetch();
+               Swal.fire({
+                  title: "Deleted!",
+                  text: "Your task has been deleted.",
+                  icon: "success"
+               });
+            } catch (error) {
+               console.log(error);
+            }
+         }
+      });
+   }
 
    return (
       <div className='space-y-6 mt-6'>
@@ -66,7 +91,7 @@ const MyTasks = () => {
                <tbody>
                   {/* row  */}
                   {
-                     tasks.map((task, idx) => <MyTaskTableRow setTask={setTask} setIsOpen={setIsOpen} idx={idx} key={task._id} task={task} refetch={refetch}></MyTaskTableRow>)
+                     tasks.map((task, idx) => <MyTaskTableRow handleDelete={handleDelete} setTask={setTask} setIsOpen={setIsOpen} idx={idx} key={task._id} task={task} refetch={refetch}></MyTaskTableRow>)
                   }
                </tbody>
             </table>

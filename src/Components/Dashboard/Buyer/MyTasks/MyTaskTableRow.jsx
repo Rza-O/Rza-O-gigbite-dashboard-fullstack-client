@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import { Pencil, Trash2 } from 'lucide-react';
 import React from 'react';
 
-const MyTaskTableRow = ({ task, refetch, idx, setIsOpen, setTask }) => {
+const MyTaskTableRow = ({ task, idx, setIsOpen, setTask, handleDelete }) => {
 
 
    return (
@@ -14,7 +14,9 @@ const MyTaskTableRow = ({ task, refetch, idx, setIsOpen, setTask }) => {
             <td>{task.totalCost}🪙</td>
             <td className="flex space-x-4">
                <span className="hover:text-red-700 cursor-pointer">
-                  <Trash2 className="w-5" />
+                  <Trash2
+                     onClick={()=> handleDelete(task._id)}
+                     className="w-5" />
                </span>
                <span onClick={() => {
                   setTask(task)
