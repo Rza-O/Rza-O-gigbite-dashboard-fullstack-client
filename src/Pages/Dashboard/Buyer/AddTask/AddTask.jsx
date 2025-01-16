@@ -3,7 +3,7 @@ import React from 'react';
 
 const AddTaskBuyer = () => {
    return (
-      <div className='w-11/12 mx-auto'>
+      <div className='container   mx-auto'>
          <AddTaskForm></AddTaskForm>
       </div>
    );
