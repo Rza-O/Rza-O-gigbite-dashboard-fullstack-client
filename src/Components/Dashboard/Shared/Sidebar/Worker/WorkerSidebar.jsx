@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const WorkerSidebar = () => {
    return (
       <div>
-         <Link to='/'>
+         <Link to='/dashboard/worker-home'>
             <ListItem>
                <ListItemPrefix>
                   <HomeIcon className="h-5 w-5" />
@@ -14,18 +14,23 @@ const WorkerSidebar = () => {
                Worker Home
             </ListItem>
          </Link>
-         <ListItem>
-            <ListItemPrefix>
-               <BriefcaseIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Tasklist
-         </ListItem>
+         
+         <Link to='/dashboard/tasks-list'>
+            <ListItem>
+               <ListItemPrefix>
+                  <BriefcaseIcon className="h-5 w-5" />
+               </ListItemPrefix>
+               Tasklist
+            </ListItem>
+         </Link>
+
          <ListItem>
             <ListItemPrefix>
                <DocumentCheckIcon className="h-5 w-5" />
             </ListItemPrefix>
             My Submission
          </ListItem>
+
          <ListItem>
             <ListItemPrefix>
                <BanknotesIcon className="h-5 w-5" />

@@ -10,6 +10,9 @@ import DashboardHome from '@/Pages/Dashboard/Common/DashboardHome';
 import BuyerHome from '@/Pages/Dashboard/Buyer/Home/BuyerHome';
 import AddTaskBuyer from '@/Pages/Dashboard/Buyer/AddTask/AddTask';
 import MyTasks from '@/Pages/Dashboard/Buyer/MyTasks/MyTasks';
+import WorkerHome from '@/Pages/Dashboard/Worker/Home/WorkerHome';
+import TasksList from '@/Pages/Dashboard/Worker/TasksList/TasksList';
+import TaskDetails from '@/Pages/Dashboard/Worker/TaskDetails/TaskDetails';
 
 const routes = createBrowserRouter([
    {
@@ -57,7 +60,25 @@ const routes = createBrowserRouter([
          {
             path: 'my-tasks',
             element: <MyTasks></MyTasks>
+         },
+
+         // TODO: add worker route
+         // worker
+         {
+            path: 'worker-home',
+            element: <PrivateRoute><WorkerHome></WorkerHome></PrivateRoute>
+         },
+         // all tasks
+         {
+            path: 'tasks-list',
+            element: <PrivateRoute><TasksList></TasksList></PrivateRoute>
+         },
+         // task details
+         {
+            path: 'task/:id',
+            element: <TaskDetails></TaskDetails>
          }
+
       ]
    }
 ])

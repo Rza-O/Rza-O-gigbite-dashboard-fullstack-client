@@ -3,10 +3,10 @@ import DashboardTitle from '@/Components/Dashboard/Shared/Title/DashboardTitle';
 import InteractiveHoverButton from '@/Components/ui/interactive-hover-button';
 import useAuth from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
+import useTasks from '@/Hooks/useTasks';
 import useUser from '@/Hooks/useUser';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
@@ -14,17 +14,8 @@ const MyTasks = () => {
    const [, refetch] = useUser();
    const [isOpen, setIsOpen] = useState(false);
    const [task, setTask] = useState(null);
-   const { user, loading } = useAuth();
+   const [tasks, refetchTask] = useTasks();
    const axiosSecure = useAxiosSecure();
-   const { data: tasks = [], isLoading, refetch: refetchTask } = useQuery({
-      queryKey: ['tasks', user?.email],
-      enabled: !loading && !!user?.email,
-      queryFn: async () => {
-         const { data } = await axiosSecure(`/tasks/${user?.email}`);
-         return data;
-      }
-   })
-
    const handleUpdate = async (e) => {
       e.preventDefault();
       const form = e.target;

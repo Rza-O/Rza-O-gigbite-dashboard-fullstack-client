@@ -11,7 +11,7 @@ const DashboardNavbar = () => {
    const [userData] = useUser();
 
    return (
-      <div className="drawer">
+      <div className="drawer backdrop-blur-lg bg-primary-light">
          <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
          <div className="drawer-content flex flex-col">
             {/* Navbar */}
@@ -114,7 +114,7 @@ const DashboardNavbar = () => {
             </div>
 
          </div>
-         <div className="drawer-side">
+         <div className="drawer-side lg:hidden">
             <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
             <ul className="menu bg-base-200 min-h-full w-80 p-4">
                {/* Sidebar content here */}
