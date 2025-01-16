@@ -1,8 +1,9 @@
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { MdOutlinePreview } from "react-icons/md";
 
-const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDetails, handleReject }) => {
+const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDetails, refetch }) => {
    const { worker_name, task_title, payable_amount, submission_details, _id } = singleSubmission || {};
    const axiosSecure = useAxiosSecure();
 
@@ -10,10 +11,28 @@ const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDe
       try {
          const { data } = await axiosSecure.patch(`/submission/status/${_id}`, {status: 'approved'})
          console.log(data)
+         refetch();
+         toast.success('Task Approved Successfully!')
       } catch (error) {
          console.log(error)
+         toast.error('Something went Wrong. Please try again!')
       }
    }
+
+
+   const handleReject = async () => {
+      try {
+         const { data } = await axiosSecure.patch(`/submission/status/${_id}`, { status: 'rejected' })
+         console.log(data)
+         refetch();
+         toast.success('Task Rejected Successfully!')
+      } catch (error) {
+         console.log(error)
+         toast.error('Something went Wrong. Please try again!')
+      }
+   }
+
+
    return (
       <tr className="hover border border-border">
          <th>{idx + 1}</th>
@@ -32,7 +51,9 @@ const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDe
             <button onClick={handleApprove} className='btn btn-success'>
                Approve
             </button>   
-            <button className='btn btn-error'>
+            <button
+               onClick={handleReject}
+               className='btn btn-error'>
                Reject
             </button>
          </td>
