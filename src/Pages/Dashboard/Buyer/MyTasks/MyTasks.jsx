@@ -3,10 +3,10 @@ import DashboardTitle from '@/Components/Dashboard/Shared/Title/DashboardTitle';
 import useAuth from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import React, { Fragment, useState } from 'react';
+import { useState } from 'react';
 
 const MyTasks = () => {
-   let [isOpen, setIsOpen] = useState(false)
+   const [isOpen, setIsOpen] = useState(false);
    const { user, loading } = useAuth();
    const axiosSecure = useAxiosSecure();
    const { data: tasks = [], isLoading, refetch } = useQuery({
@@ -40,7 +40,18 @@ const MyTasks = () => {
                   }
                </tbody>
             </table>
-            
+
+            <dialog id="my_modal_3" className="modal" open={isOpen}>
+               <div className="modal-box">
+                  <form method="dialog">
+                     {/* if there is a button in form, it will close the modal */}
+                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                  </form>
+                  <h3 className="font-bold text-lg">Hello!</h3>
+                  <p className="py-4">Press ESC key or click on ✕ button to close</p>
+               </div>
+            </dialog>
+
          </div>
       </div>
    );
