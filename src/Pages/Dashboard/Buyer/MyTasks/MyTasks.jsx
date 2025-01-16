@@ -3,6 +3,7 @@ import DashboardTitle from '@/Components/Dashboard/Shared/Title/DashboardTitle';
 import InteractiveHoverButton from '@/Components/ui/interactive-hover-button';
 import useAuth from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
+import useUser from '@/Hooks/useUser';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -10,12 +11,12 @@ import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
 const MyTasks = () => {
-   const { register, handleSubmit } = useForm();
+   const [, refetch] = useUser();
    const [isOpen, setIsOpen] = useState(false);
    const [task, setTask] = useState(null);
    const { user, loading } = useAuth();
    const axiosSecure = useAxiosSecure();
-   const { data: tasks = [], isLoading, refetch } = useQuery({
+   const { data: tasks = [], isLoading, refetch: refetchTask } = useQuery({
       queryKey: ['tasks', user?.email],
       enabled: !loading && !!user?.email,
       queryFn: async () => {
@@ -35,7 +36,7 @@ const MyTasks = () => {
 
       try {
          const {data} = await axiosSecure.patch(`/task/${task?._id}`, updateData);
-         refetch();
+         refetchTask();
          console.log(data);
          toast.success('Task updated successfully!');
          setIsOpen(false);
@@ -60,6 +61,7 @@ const MyTasks = () => {
             try {
                const { data } = await axiosSecure.delete(`/task/${id}`);
                console.log(data);
+               refetchTask();
                refetch();
                Swal.fire({
                   title: "Deleted!",
