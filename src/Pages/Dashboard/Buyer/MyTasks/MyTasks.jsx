@@ -77,7 +77,7 @@ const MyTasks = () => {
                      <th>#</th>
                      <th>Title</th>
                      <th>Deadline</th>
-                     <th>Cost</th>
+                     <th>Coin Remaining</th>
                      <th>Actions</th>
                   </tr>
                </thead>

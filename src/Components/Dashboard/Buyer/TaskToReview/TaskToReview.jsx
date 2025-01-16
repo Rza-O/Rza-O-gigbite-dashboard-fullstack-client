@@ -4,6 +4,7 @@ import ReviewTableRow from './ReviewTableRow';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
+import Loading from '@/Components/Shared/LoadingSpinner/Loading';
 
 const TaskToReview = () => {
    const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,8 +12,7 @@ const TaskToReview = () => {
    const { user, loading } = useAuth();
    const axiosSecure = useAxiosSecure();
 
-
-   const { data: myWorkSubmissions, refetch } = useQuery({
+   const { data: myWorkSubmissions = [], refetch, isLoading } = useQuery({
       queryKey: ['myWorkSubmissions', user?.email],
       enabled: !loading && !!user?.email,
       queryFn: async () => {
@@ -21,7 +21,17 @@ const TaskToReview = () => {
       }
    })
 
+   if(isLoading) return <Loading></Loading>
+
    console.log(myWorkSubmissions)
+
+
+
+   const handleReject = async () => {
+
+   }
+
+
 
    return (
       <div className='container mx-auto'>
@@ -45,7 +55,7 @@ const TaskToReview = () => {
                   <tbody>
                      {/* row 1 */}
                      {
-                        myWorkSubmissions.map((singleSubmission, idx) => <ReviewTableRow setIsModalOpen={setIsModalOpen} idx={idx} setSubmissionDetails={setSubmissionDetails} singleSubmission={singleSubmission} key={singleSubmission._id}></ReviewTableRow>)
+                        myWorkSubmissions.map((singleSubmission, idx) => <ReviewTableRow refetch={refetch} setIsModalOpen={setIsModalOpen} idx={idx} setSubmissionDetails={setSubmissionDetails} singleSubmission={singleSubmission} key={singleSubmission._id}></ReviewTableRow>)
                      }
                   </tbody>
                </table>
