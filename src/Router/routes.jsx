@@ -14,6 +14,7 @@ import WorkerHome from '@/Pages/Dashboard/Worker/Home/WorkerHome';
 import TasksList from '@/Pages/Dashboard/Worker/TasksList/TasksList';
 import TaskDetails from '@/Pages/Dashboard/Worker/TaskDetails/TaskDetails';
 import MySubmission from '@/Pages/Dashboard/Worker/MySubmission/MySubmission';
+import Withdrawals from '@/Pages/Dashboard/Worker/Withdrawals/Withdrawals';
 
 const routes = createBrowserRouter([
    {
@@ -83,6 +84,11 @@ const routes = createBrowserRouter([
          {
             path: 'my-submissions',
             element: <PrivateRoute><MySubmission></MySubmission></PrivateRoute>
+         },
+         // Withdrawals for worker
+         {
+            path: 'withdrawals',
+            element: <PrivateRoute><Withdrawals></Withdrawals></PrivateRoute>
          }
 
       ]

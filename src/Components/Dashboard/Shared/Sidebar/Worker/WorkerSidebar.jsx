@@ -33,15 +33,17 @@ const WorkerSidebar = () => {
             </ListItem>
          </Link>
 
-         <ListItem>
-            <ListItemPrefix>
-               <BanknotesIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Withdrawals
-            <ListItemSuffix>
-               <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
-            </ListItemSuffix>
-         </ListItem>
+         <Link to='/dashboard/withdrawals'>
+            <ListItem>
+               <ListItemPrefix>
+                  <BanknotesIcon className="h-5 w-5" />
+               </ListItemPrefix>
+               Withdrawals
+               {/* <ListItemSuffix>
+                  <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+               </ListItemSuffix> */}
+            </ListItem>
+         </Link>
       </div>
    );
 };

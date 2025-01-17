@@ -6,7 +6,8 @@ const ApprovedSubmissionsTableRow = ({ mySubmission, idx }) => {
       <tr className=" border border-border hover:bg-primary-light/30">
          <th>{idx + 1}</th>
          <td>{mySubmission.task_title}</td>
-         <td>{format(new Date(mySubmission.submission_date), "P")}</td>
+         <td>{mySubmission.payable_amount}🪙</td>
+         <td>{mySubmission.buyer_name}</td>
          {mySubmission.status &&
             <td>
                <div className={`badge badge-outline ${mySubmission.status === 'pending'
