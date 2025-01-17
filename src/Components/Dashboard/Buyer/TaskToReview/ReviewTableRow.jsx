@@ -34,7 +34,7 @@ const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDe
 
 
    return (
-      <tr className="hover border border-border">
+      <tr className="hover:bg-primary-light/30  border border-border">
          <th>{idx + 1}</th>
          <td>{worker_name}</td>
          <td>{task_title}</td>

@@ -1,9 +1,10 @@
+import WorkerStatsCard from '@/Components/Dashboard/Worker/Home/WorkerStatsCard';
 import React from 'react';
 
 const WorkerHome = () => {
    return (
       <div>
-         This is worker home
+         <WorkerStatsCard></WorkerStatsCard>
       </div>
    );
 };

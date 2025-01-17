@@ -124,6 +124,7 @@ const TaskDetails = () => {
                      </div>
                      <div className="form-control mt-6">
                         <button
+                           disabled={!required_workers}
                            className="btn bg-secondary hover:bg-primary-dark transition duration-300">Submit</button>
                      </div>
                   </form>

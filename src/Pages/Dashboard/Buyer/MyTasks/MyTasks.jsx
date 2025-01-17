@@ -61,6 +61,7 @@ const MyTasks = () => {
                });
             } catch (error) {
                console.log(error);
+               toast.error(error.response.data.message);
             }
          }
       });
@@ -69,25 +70,29 @@ const MyTasks = () => {
    return (
       <div className='space-y-6 mt-6'>
          <DashboardTitle title={'All Tasks Added'} subtitle={'Find the record of all the task added'}></DashboardTitle>
-         <div className="overflow-x-auto w-11/12 mx-auto border border-border">
-            <table className="table">
-               {/* head */}
-               <thead>
-                  <tr>
-                     <th>#</th>
-                     <th>Title</th>
-                     <th>Deadline</th>
-                     <th>Coin Remaining</th>
-                     <th>Actions</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  {/* row  */}
-                  {
-                     tasks.map((task, idx) => <MyTaskTableRow handleDelete={handleDelete} setTask={setTask} setIsOpen={setIsOpen} idx={idx} key={task._id} task={task} refetch={refetch}></MyTaskTableRow>)
-                  }
-               </tbody>
-            </table>
+         <div className="overflow-x-auto w-11/12 mx-auto ">
+            {tasks.length > 0 ? (
+               <table className="table border border-border">
+                  {/* head */}
+                  <thead>
+                     <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Deadline</th>
+                        <th>Coin Remaining</th>
+                        <th>Actions</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {/* row  */}
+                     {
+                        tasks.map((task, idx) => <MyTaskTableRow handleDelete={handleDelete} setTask={setTask} setIsOpen={setIsOpen} idx={idx} key={task._id} task={task} refetch={refetch}></MyTaskTableRow>)
+                     }
+                  </tbody>
+               </table>
+            ) : (
+                  <p className='text-center text-2xl'>You haven't added any task yet!</p>
+            )}
 
             <dialog id="my_modal_3" className="modal" open={isOpen}>
                <div className="modal-box">

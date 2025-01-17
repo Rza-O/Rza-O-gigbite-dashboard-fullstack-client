@@ -8,8 +8,14 @@ const MySubmissionsTableRow = ({ mySubmission, idx }) => {
          <td>{mySubmission.task_title}</td>
          <td>{format(new Date(mySubmission.submission_date), "P")}</td>
          {mySubmission.status &&
-            <td>{mySubmission.status === 'pending'
-               && <div className="badge badge-warning badge-outline">{mySubmission.status}</div>}</td>}
+            <td>
+               <div className={`badge badge-outline ${mySubmission.status === 'pending'
+                     ? 'badge-warning'
+                     : mySubmission.status === 'approved'
+                        ? 'badge-success'
+                        : 'badge-error'
+                  }`}>{mySubmission.status}</div>
+            </td>}
       </tr>
    );
 };

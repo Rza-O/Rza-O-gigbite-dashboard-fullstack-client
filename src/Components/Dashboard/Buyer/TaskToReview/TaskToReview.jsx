@@ -38,43 +38,49 @@ const TaskToReview = () => {
          <div className='my-6'>
             <DashboardTitle title={'Task To Review'}></DashboardTitle>
          </div>
-         <div>
-            <div className="overflow-x-auto">
-               <table className="table">
-                  {/* head */}
-                  <thead>
-                     <tr>
-                        <th>#</th>
-                        <th>Worker Name</th>
-                        <th>Task Title</th>
-                        <th>Payable Amount</th>
-                        <th>View Submission</th>
-                        <th>Actions</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     {/* row 1 */}
-                     {
-                        myWorkSubmissions.map((singleSubmission, idx) => <ReviewTableRow refetch={refetch} setIsModalOpen={setIsModalOpen} idx={idx} setSubmissionDetails={setSubmissionDetails} singleSubmission={singleSubmission} key={singleSubmission._id}></ReviewTableRow>)
-                     }
-                  </tbody>
-               </table>
+         {myWorkSubmissions.length > 0 ? (
+            <div>
+               <div className="overflow-x-auto">
+                  <table className="table">
+                     {/* head */}
+                     <thead>
+                        <tr>
+                           <th>#</th>
+                           <th>Worker Name</th>
+                           <th>Task Title</th>
+                           <th>Payable Amount</th>
+                           <th>View Submission</th>
+                           <th>Actions</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {/* row 1 */}
+                        {
+                           myWorkSubmissions.map((singleSubmission, idx) => <ReviewTableRow refetch={refetch} setIsModalOpen={setIsModalOpen} idx={idx} setSubmissionDetails={setSubmissionDetails} singleSubmission={singleSubmission} key={singleSubmission._id}></ReviewTableRow>)
+                        }
+                     </tbody>
+                  </table>
 
-               {/* view submission modal */}
-               <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle" open={isModalOpen}>
-                  <div className="modal-box">
-                     <h3 className="font-bold text-lg text-center text-primary-content">Submitted Info Down Below</h3>
-                     <p className="py-4">{submissionDetails}</p>
-                     <div className="modal-action">
-                        <form method="dialog">
-                           {/* if there is a button in form, it will close the modal */}
-                           <button onClick={() => setIsModalOpen(false)} className="btn">Close</button>
-                        </form>
+                  {/* view submission modal */}
+                  <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle" open={isModalOpen}>
+                     <div className="modal-box">
+                        <h3 className="font-bold text-lg text-center text-primary-content">Submitted Info Down Below</h3>
+                        <p className="py-4">{submissionDetails}</p>
+                        <div className="modal-action">
+                           <form method="dialog">
+                              {/* if there is a button in form, it will close the modal */}
+                              <button onClick={() => setIsModalOpen(false)} className="btn">Close</button>
+                           </form>
+                        </div>
                      </div>
-                  </div>
-               </dialog>
+                  </dialog>
+               </div>
             </div>
-         </div>
+         ) : (
+               <div>
+                  <p className='text-center text-2xl'>There's no task to review yet</p>
+               </div>
+         )}
       </div>
    );
 };
