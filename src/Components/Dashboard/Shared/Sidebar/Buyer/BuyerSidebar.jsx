@@ -34,22 +34,23 @@ const BuyerSidebar = () => {
             </ListItem>
          </Link>
 
-         <ListItem>
-            <ListItemPrefix>
-               <BanknotesIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Purchase Coin
-            <ListItemSuffix>
-               <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
-            </ListItemSuffix>
-         </ListItem>
+         <Link to='/dashboard/purchase-coin'>
+            <ListItem>
+               <ListItemPrefix>
+                  <BanknotesIcon className="h-5 w-5" />
+               </ListItemPrefix>
+               Purchase Coin
+            </ListItem>
+         </Link>
 
-         <ListItem>
-            <ListItemPrefix>
-               <Landmark className="h-5 w-5" />
-            </ListItemPrefix>
-            Payment history
-         </ListItem>
+         <Link to='/dashboard/payment-history'>
+            <ListItem>
+               <ListItemPrefix>
+                  <Landmark className="h-5 w-5" />
+               </ListItemPrefix>
+               Payment history
+            </ListItem>
+         </Link>
       </div>
    );
 };

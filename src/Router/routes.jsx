@@ -17,6 +17,10 @@ import MySubmission from '@/Pages/Dashboard/Worker/MySubmission/MySubmission';
 import Withdrawals from '@/Pages/Dashboard/Worker/Withdrawals/Withdrawals';
 import BuyerRoute from './BuyerRoute';
 import WorkerRoute from './WorkerRoute';
+import PurchaseCoin from '@/Pages/Dashboard/Buyer/PurchaseCoin/PurchaseCoin';
+import PaymentHistory from '@/Pages/Dashboard/Buyer/PaymentHistory/PaymentHistory';
+import Payment from '@/Components/Dashboard/Buyer/PurchaseCoin/Payment';
+
 
 const routes = createBrowserRouter([
    {
@@ -65,6 +69,22 @@ const routes = createBrowserRouter([
             path: 'my-tasks',
             element: <PrivateRoute><BuyerRoute><MyTasks></MyTasks></BuyerRoute></PrivateRoute>
          },
+         // purchase coin route
+         {
+            path: 'purchase-coin',
+            element: <PrivateRoute><BuyerRoute><PurchaseCoin></PurchaseCoin></BuyerRoute></PrivateRoute>
+         },
+         // Payment History
+         {
+            path: 'payment-history',
+            element: <PrivateRoute><BuyerRoute><PaymentHistory></PaymentHistory></BuyerRoute></PrivateRoute>
+         },
+         // Payment Route
+         {
+            path: 'payment',
+            element: <PrivateRoute><BuyerRoute><Payment></Payment></BuyerRoute></PrivateRoute>
+         },
+
 
          // TODO: add worker route
          // worker
