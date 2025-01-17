@@ -23,16 +23,6 @@ const TaskToReview = () => {
 
    if(isLoading) return <Loading></Loading>
 
-   console.log(myWorkSubmissions)
-
-
-
-   const handleReject = async () => {
-
-   }
-
-
-
    return (
       <div className='container mx-auto'>
          <div className='my-6'>
