@@ -2,6 +2,7 @@ import Loading from '@/Components/Shared/LoadingSpinner/Loading';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
 import useUser from '@/Hooks/useUser';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 function WithdrawalForm() {
    const [coinsToWithdraw, setCoinsToWithdraw] = useState(0);
@@ -9,10 +10,10 @@ function WithdrawalForm() {
    const [paymentSystem, setPaymentSystem] = useState('');
    const [accountNumber, setAccountNumber] = useState('');
    const [errorMessage, setErrorMessage] = useState('');
-   const AxiosSecure = useAxiosSecure();
+   const axiosSecure = useAxiosSecure();
 
    const [userData, refetch, isLoading] = useUser();
-   console.log(userData)
+   // console.log(userData)
    const coinBalance = userData?.coin;
    // Handle coin input change
    const handleCoinInput = (e) => {
@@ -39,7 +40,7 @@ function WithdrawalForm() {
             withdrawal_amount: withdrawalAmount,
             payment_system: paymentSystem,
             account_number: accountNumber,
-            withdraw_date: new Date(),
+            withdraw_date: new Date().toISOString(),
             status: 'pending',
          };
 
@@ -47,9 +48,13 @@ function WithdrawalForm() {
          console.log(withdrawalData);
 
          try {
-            // const {data} = await 
+            const { data } = await axiosSecure.post(`/withdrawals/${userData.email}`, withdrawalData);
+            console.log(data)
+            refetch();
+            toast.success('Withdrawals requested!');
          } catch (error) {
-
+            console.log(error);
+            toast.error('Something went wrong. Try again later');
          }
       }
    };
@@ -73,7 +78,8 @@ function WithdrawalForm() {
          </div>
 
          <div className="w-full max-w-lg p-8 bg-white rounded-lg shadow-lg">
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Withdrawal Form</h2>
+            <h2 className="text-3xl font-bold text-center text-primary-content mb-6">Withdrawal Form</h2>
+            <p className='mb-3 font-surfer'>Coins Available: <span className='text-error-content'>{ userData.coin}🪙</span></p>
             {/* form */}
             <form onSubmit={handleSubmit}>
                {/* coin amount to withdraw */}
@@ -109,7 +115,9 @@ function WithdrawalForm() {
                      value={paymentSystem}
                      onChange={(e) => setPaymentSystem(e.target.value)}
                      className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                     required
                   >
+                     <option value="" disabled>Choose payment method</option>
                      <option value="Bkash">Bkash</option>
                      <option value="Rocket">Rocket</option>
                      <option value="Nagad">Nagad</option>
@@ -125,6 +133,7 @@ function WithdrawalForm() {
                      value={accountNumber}
                      onChange={(e) => setAccountNumber(e.target.value)}
                      className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                     required
                   />
                </div>
 

@@ -44,7 +44,7 @@ export function Sidebar() {
    return (
       <div className="">
          
-         <Card className="min-h-svh w-full max-w-[20rem] p-4 shadow-xl bg-[#e5e6e6]  shadow-blue-gray-900/5 ">
+         <Card className="h-full w-full max-w-[20rem] p-4 shadow-xl bg-[#e5e6e6]  shadow-blue-gray-900/5 ">
             <div className="mb-2 p-4">
                <Link to='/'><img className="w-52" src={Logo} alt="" /></Link>
             </div>
