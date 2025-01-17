@@ -15,6 +15,8 @@ import TasksList from '@/Pages/Dashboard/Worker/TasksList/TasksList';
 import TaskDetails from '@/Pages/Dashboard/Worker/TaskDetails/TaskDetails';
 import MySubmission from '@/Pages/Dashboard/Worker/MySubmission/MySubmission';
 import Withdrawals from '@/Pages/Dashboard/Worker/Withdrawals/Withdrawals';
+import BuyerRoute from './BuyerRoute';
+import WorkerRoute from './WorkerRoute';
 
 const routes = createBrowserRouter([
    {
@@ -51,44 +53,44 @@ const routes = createBrowserRouter([
          // buyer home
          {
             path: 'buyer-home',
-            element: <PrivateRoute><BuyerHome></BuyerHome></PrivateRoute>
+            element: <PrivateRoute><BuyerRoute><BuyerHome></BuyerHome></BuyerRoute></PrivateRoute>
          },
          // Add task
          {
             path: 'add-task',
-            element: <PrivateRoute><AddTaskBuyer></AddTaskBuyer></PrivateRoute>
+            element: <PrivateRoute><BuyerRoute><AddTaskBuyer></AddTaskBuyer></BuyerRoute></PrivateRoute>
          },
          // My Tasks
          {
             path: 'my-tasks',
-            element: <MyTasks></MyTasks>
+            element: <PrivateRoute><BuyerRoute><MyTasks></MyTasks></BuyerRoute></PrivateRoute>
          },
 
          // TODO: add worker route
          // worker
          {
             path: 'worker-home',
-            element: <PrivateRoute><WorkerHome></WorkerHome></PrivateRoute>
+            element: <PrivateRoute><WorkerRoute><WorkerHome></WorkerHome></WorkerRoute></PrivateRoute>
          },
          // all tasks
          {
             path: 'tasks-list',
-            element: <PrivateRoute><TasksList></TasksList></PrivateRoute>
+            element: <PrivateRoute><WorkerRoute><TasksList></TasksList></WorkerRoute></PrivateRoute>
          },
          // task details
          {
             path: 'task/:id',
-            element: <TaskDetails></TaskDetails>
+            element: <PrivateRoute><WorkerRoute><TaskDetails></TaskDetails></WorkerRoute></PrivateRoute>
          },
          // single worker submission
          {
             path: 'my-submissions',
-            element: <PrivateRoute><MySubmission></MySubmission></PrivateRoute>
+            element: <PrivateRoute><WorkerRoute><MySubmission></MySubmission></WorkerRoute></PrivateRoute>
          },
          // Withdrawals for worker
          {
             path: 'withdrawals',
-            element: <PrivateRoute><Withdrawals></Withdrawals></PrivateRoute>
+            element: <PrivateRoute><WorkerRoute><Withdrawals></Withdrawals></WorkerRoute></PrivateRoute>
          }
 
       ]
