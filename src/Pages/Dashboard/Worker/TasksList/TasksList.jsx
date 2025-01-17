@@ -14,11 +14,11 @@ const TasksList = () => {
          return data;
       }
    })
-   if(isLoading) return <Loading></Loading>
+   if (isLoading) return <Loading></Loading>
    return (
       <div className='w-11/12 mx-auto space-y-6 my-6'>
          <DashboardTitle title={'All Tasks Available'} subtitle={'You can find all the active tasks here'}></DashboardTitle>
-         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+         <div className=' gap-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-center border items-center'>
             {
                AllTasks.map(task => <TaskCard key={task._id} task={task}></TaskCard>)
             }

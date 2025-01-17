@@ -31,7 +31,7 @@ const TaskToReview = () => {
          {myWorkSubmissions.length > 0 ? (
             <div>
                <div className="overflow-x-auto">
-                  <table className="table">
+                  <table className="table static">
                      {/* head */}
                      <thead>
                         <tr>

@@ -72,7 +72,7 @@ const MyTasks = () => {
          <DashboardTitle title={'All Tasks Added'} subtitle={'Find the record of all the task added'}></DashboardTitle>
          <div className="overflow-x-auto w-11/12 mx-auto ">
             {tasks.length > 0 ? (
-               <table className="table border border-border">
+               <table className="table static border border-border">
                   {/* head */}
                   <thead>
                      <tr>

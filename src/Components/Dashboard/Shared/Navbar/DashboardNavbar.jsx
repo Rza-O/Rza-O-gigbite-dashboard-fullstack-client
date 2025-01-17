@@ -114,7 +114,7 @@ const DashboardNavbar = () => {
             </div>
 
          </div>
-         <div className="drawer-side lg:hidden">
+         <div className="drawer-side lg:hidden z-50 fixed">
             <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
             <ul className="menu bg-[#e5e6e6]  min-h-full w-80 ">
                <Sidebar></Sidebar>

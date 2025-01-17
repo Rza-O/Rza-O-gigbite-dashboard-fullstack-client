@@ -65,7 +65,7 @@ const AddTaskForm = () => {
             <div className="space-y-3">
                {/* Profile picture */}
                <div className=' p-4  w-full  m-auto rounded-lg flex-grow'>
-                  <div className='file_upload px-5 py-3 relative border-4 border-dotted border-border rounded-lg'>
+                  <div className='file_upload px-5 py-3 border-4 border-dotted border-border rounded-lg'>
                      <div className='flex flex-col w-max mx-auto text-center'>
                         <label>
                            <input
