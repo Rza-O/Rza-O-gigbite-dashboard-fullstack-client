@@ -7,6 +7,7 @@ import useAuth from "@/Hooks/useAuth";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import useUser from "@/Hooks/useUser";
 import toast from "react-hot-toast";
+import { FaSpinner } from "react-icons/fa";
 
 const AddTaskForm = () => {
    const { user } = useAuth();
@@ -15,12 +16,16 @@ const AddTaskForm = () => {
    const [uploadImage, setUploadImage] = useState({ image: { name: 'Upload button' } });
    const [startDate, setStartDate] = useState(new Date());
    const { register, handleSubmit, formState: { errors } } = useForm();
+   const [loading, setLoading] = useState(false);
+
    const handleAddTask = async (data) => {
+      setLoading(true);
       console.log(data)
       const payable_amount = parseInt(data.payable_amount)
       const required_workers = parseInt(data.required_workers)
       const totalCost = required_workers * payable_amount;
       if (totalCost > userData.coin) {
+         setLoading(false);
          return toast.error('insufficient coin')
       }
       const photo = uploadImage.image;
@@ -43,13 +48,13 @@ const AddTaskForm = () => {
          const { data } = await axiosSecure.post('/task', taskData);
          toast.success('Task added successfully')
          refetch();
+         setLoading(false)
          console.log(data)
       } catch (error) {
+         setLoading(false)
+         toast.error('Something went wrong. Try again later!')
          console.log(error)
       }
-
-
-
    }
 
 
@@ -217,10 +222,19 @@ const AddTaskForm = () => {
                {/* submit */}
                <div className="flex items-center justify-center">
                   <button
-                     className="btn btn-wide inline-flex h-12  items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white duration-200 hover:bg-primary-content focus:ring-2 focus:ring-border focus:ring-offset-2"
+                     className={`btn btn-wide inline-flex h-12 items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white ${loading ? "cursor-not-allowed opacity-70" : "hover:bg-primary-content"
+                        }`}
                      type="submit"
+                     
                   >
-                     Add Task
+                     {loading ? (
+                        <>
+                           <FaSpinner className="animate-spin" />
+                           Processing...
+                        </>
+                     ) : (
+                        "Add Task"
+                     )}
                   </button>
                </div>
             </div>
