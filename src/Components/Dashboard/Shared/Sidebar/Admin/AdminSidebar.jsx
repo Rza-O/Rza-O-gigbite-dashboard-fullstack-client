@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const AdminSidebar = () => {
    return (
       <div>
-         <Link to='/'>
+         <Link to='/dashboard/admin-home'>
             <ListItem>
                <ListItemPrefix>
                   <HomeIcon className="h-5 w-5" />
@@ -14,18 +14,24 @@ const AdminSidebar = () => {
                Admin Home
             </ListItem>
          </Link>
-         <ListItem>
-            <ListItemPrefix>
-               <UsersIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Manage Users
-         </ListItem>
-         <ListItem>
-            <ListItemPrefix>
-               <ClipboardDocumentListIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Manage Tasks
-         </ListItem>
+
+         <Link to='/dashboard/manage-users'>
+            <ListItem>
+               <ListItemPrefix>
+                  <UsersIcon className="h-5 w-5" />
+               </ListItemPrefix>
+               Manage Users
+            </ListItem>
+         </Link>
+
+         <Link to='/dashboard/manage-tasks'>
+            <ListItem>
+               <ListItemPrefix>
+                  <ClipboardDocumentListIcon className="h-5 w-5" />
+               </ListItemPrefix>
+               Manage Tasks
+            </ListItem>
+         </Link>
       </div>
    );
 };

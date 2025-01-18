@@ -3,7 +3,7 @@ import useRole from '@/Hooks/useRole';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const WorkerRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
    const [role, isLoading] = useRole();
    if (isLoading) return <Loading></Loading>;
    if (role === 'admin') return children;
@@ -11,4 +11,4 @@ const WorkerRoute = ({ children }) => {
    return <Navigate to='/dashboard' replace='true'></Navigate>
 };
 
-export default WorkerRoute;
+export default AdminRoute;

@@ -20,6 +20,10 @@ import WorkerRoute from './WorkerRoute';
 import PurchaseCoin from '@/Pages/Dashboard/Buyer/PurchaseCoin/PurchaseCoin';
 import PaymentHistory from '@/Pages/Dashboard/Buyer/PaymentHistory/PaymentHistory';
 import Payment from '@/Components/Dashboard/Buyer/PurchaseCoin/Payment';
+import AdminRoute from './AdminRoute';
+import AdminHome from '@/Pages/Dashboard/Admin/Home/AdminHome';
+import ManageUsers from '@/Pages/Dashboard/Admin/ManageUsers/ManageUsers';
+import ManageTasks from '@/Pages/Dashboard/Admin/ManageTasks/ManageTasks';
 
 
 const routes = createBrowserRouter([
@@ -111,6 +115,22 @@ const routes = createBrowserRouter([
          {
             path: 'withdrawals',
             element: <PrivateRoute><WorkerRoute><Withdrawals></Withdrawals></WorkerRoute></PrivateRoute>
+         },
+
+         // Admin routes
+         {
+            path: 'admin-home',
+            element: <PrivateRoute><AdminRoute><AdminHome></AdminHome></AdminRoute></PrivateRoute>
+         },
+         // Manage users
+         {
+            path: 'manage-users',
+            element: <PrivateRoute><AdminRoute><ManageUsers></ManageUsers></AdminRoute></PrivateRoute>
+         },
+         // Manage tasks
+         {
+            path: 'manage-tasks',
+            element: <PrivateRoute><AdminRoute><ManageTasks></ManageTasks></AdminRoute></PrivateRoute>
          }
 
       ]
