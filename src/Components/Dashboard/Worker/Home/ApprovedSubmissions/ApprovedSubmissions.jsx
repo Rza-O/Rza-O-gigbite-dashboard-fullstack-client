@@ -21,7 +21,7 @@ const ApprovedSubmissions = () => {
 
    if (isLoading) return <Loading></Loading>
 
-   console.log(mySubmissions);
+   // console.log(mySubmissions);
 
 
    return (
@@ -31,7 +31,7 @@ const ApprovedSubmissions = () => {
          </div>
          {
             mySubmissions.length > 0 ? (
-               <table className="table">
+               <table className="table static">
                   {/* head */}
                   <thead>
                      <tr>

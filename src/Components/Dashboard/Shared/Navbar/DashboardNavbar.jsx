@@ -1,14 +1,47 @@
 import React from 'react';
 import { Sidebar } from '../Sidebar/Common/Sidebar';
 import useUser from '@/Hooks/useUser';
-
+import { format } from 'date-fns'
 import { GrUserAdmin } from 'react-icons/gr';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaUserGear } from "react-icons/fa6";
 import { CiCoinInsert } from "react-icons/ci";
+import useAxiosSecure from '@/Hooks/useAxiosSecure';
+import { data, useNavigate } from 'react-router-dom';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 const DashboardNavbar = () => {
-   const [userData] = useUser();
+   const [userData, isLoading] = useUser();
+   const axiosSecure = useAxiosSecure();
+   const navigate = useNavigate();
+
+   // fetching all the notification from db
+   const { data: notifications = [], refetch } = useQuery({
+      queryKey: ['notifications', userData?.email],
+      enabled: !!isLoading && !!userData?.email,
+      queryFn: async () => {
+         const { data } = await axiosSecure(`/notifications/${userData?.email}`)
+         return data;
+      }
+   });
+
+   // marking notification as read 
+   const handleMarkAsRead = useMutation({
+      mutationFn: (id) => axiosSecure.patch(`/notifications/read/${id}`),
+      onSuccess: () => refetch(),
+   })
+
+   // handle notification click
+   const handleNotificationClick = (notification) => {
+      handleMarkAsRead.mutate(notification._id);
+      navigate(notification.actionRoute)
+   }
+
+   // keeping notification dropdown clean to only show unread notifications for better ui
+   // const unreadCount = notifications.filter((n) => n.status === 'unread').length;
+
+
+   console.log(notifications)
 
    return (
       <div className="drawer backdrop-blur-lg bg-primary-light">
@@ -77,6 +110,7 @@ const DashboardNavbar = () => {
                      </div>
                      {/* <li><a>Navbar Item 1</a></li> */}
 
+                     {/* indicator will be hidden and there will be message 'no new notification and if there's unread notification then the indicator will be shown' */}
                      <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                            <div className="indicator">
@@ -92,18 +126,37 @@ const DashboardNavbar = () => {
                                     strokeWidth="2"
                                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                               </svg>
-                              <span className="badge badge-xs badge-secondary indicator-item"></span>
+                              {notifications.length > 0 && <span className="badge badge-xs badge-secondary indicator-item"></span>}
                            </div>
                         </div>
                         <div
                            tabIndex={0}
                            className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
                            <div className="card-body">
-                              <span className="text-lg font-bold">8 Items</span>
-                              <span className="text-info">Subtotal: $999</span>
-                              <div className="card-actions">
-                                 <button className="btn btn-primary btn-block">View cart</button>
-                              </div>
+                              {/* this is where notification body will be */}
+                              {
+                                 notifications.length > 0 ? (
+                                    <ul className='divide-y'>
+                                       {
+                                          notifications.map((notification) => (
+                                             <li
+                                                className={`py-2 px-2 rounded-lg cursor-pointer ${notification?.status === 'unread' ? 'hover:bg-primary/30' : ''}`}
+                                                key={notification._id}
+                                                onClick={() => handleNotificationClick(notification)}
+                                             >
+                                                <div className='flex flex-col'>
+                                                   <p>{notification?.message}</p>
+                                                   <small className='text-gray-700'>{ format(new Date(notification?.time), "P")}</small>
+                                                </div>
+                                             </li>
+                                          ))
+                                       }
+                                    </ul>
+                                 ) : (
+                                    <p className="text-sm text-black">No new notifications</p>
+                                 )
+                              }
+
                            </div>
                         </div>
                      </div>

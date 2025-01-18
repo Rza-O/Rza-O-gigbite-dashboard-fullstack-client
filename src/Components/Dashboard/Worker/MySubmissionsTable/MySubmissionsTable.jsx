@@ -33,7 +33,7 @@ const MySubmissionsTable = () => {
 
    return (
       <div>
-         <div className="overflow-x-auto h-[300px]">
+         <div className="overflow-x-auto h-[530px] md:h-[300px]">
             <table className="table static ">
                {/* head */}
                <thead>

@@ -34,10 +34,10 @@ const WorkerStatsCard = () => {
       }
    })
 
-   console.log(statsData)
+   // console.log(statsData)
 
    const { pendingSubmission, totalEarnings, totalSubmission } = statsData || {}
-   console.log(totalSubmission)
+   // console.log(totalSubmission)
    return (
       <div className='p-6'>
 
