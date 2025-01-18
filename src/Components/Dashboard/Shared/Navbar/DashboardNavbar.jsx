@@ -38,7 +38,7 @@ const DashboardNavbar = () => {
    }
 
    // keeping notification dropdown clean to only show unread notifications for better ui
-   // const unreadCount = notifications.filter((n) => n.status === 'unread').length;
+   const unreadCount = notifications.filter((n) => n.status === 'unread').length;
 
 
    console.log(notifications)
@@ -111,7 +111,7 @@ const DashboardNavbar = () => {
                      {/* <li><a>Navbar Item 1</a></li> */}
 
                      {/* indicator will be hidden and there will be message 'no new notification and if there's unread notification then the indicator will be shown' */}
-                     <div className="dropdown dropdown-end">
+                     <div className="dropdown dropdown-end ">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                            <div className="indicator">
                               <svg
@@ -126,17 +126,17 @@ const DashboardNavbar = () => {
                                     strokeWidth="2"
                                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                               </svg>
-                              {notifications.length > 0 && <span className="badge badge-xs badge-secondary indicator-item"></span>}
+                              {unreadCount > 0 && <span className="badge badge-xs badge-secondary indicator-item"></span>}
                            </div>
                         </div>
                         <div
                            tabIndex={0}
                            className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
-                           <div className="card-body">
+                           <div className="card-body ">
                               {/* this is where notification body will be */}
                               {
                                  notifications.length > 0 ? (
-                                    <ul className='divide-y'>
+                                    <ul className='max-h-48 overflow-y-auto divide-y divide-gray-300'>
                                        {
                                           notifications.map((notification) => (
                                              <li

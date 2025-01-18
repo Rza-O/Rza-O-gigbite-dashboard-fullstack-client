@@ -19,7 +19,7 @@ const WithdrawRequest = ({ refetchStats }) => {
    const handleApproval = async (id) => {
       try {
          const { data } = await axiosSecure.patch(`/admin/approval/${id}`)
-         console.log(data);
+         // console.log(data);
          refetchStats();
          refetch();
          toast.success('Withdrawal request approved')
