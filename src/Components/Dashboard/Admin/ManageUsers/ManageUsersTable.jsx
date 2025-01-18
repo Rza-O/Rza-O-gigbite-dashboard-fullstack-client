@@ -16,6 +16,7 @@ const ManageUsersTable = () => {
          return data;
       },
    });
+   console.log(users)
 
    // delete a user
    const handleDelete = async (id) => {
@@ -43,13 +44,14 @@ const ManageUsersTable = () => {
    console.log(users)
 
    return (
-      <div className="container mx-auto p-6">
-         <div className="overflow-x-auto">
+      <div className="  bg-background">
+         <div className="overflow-x-auto container mx-auto p-6">
             <table className="table w-full static">
                {/* Table Head */}
                <thead>
                   <tr>
                      <th>#</th>
+                     <th>image</th>
                      <th>Name</th>
                      <th>Email</th>
                      <th>Role</th>
@@ -66,20 +68,21 @@ const ManageUsersTable = () => {
                         {/* User Info */}
                         <td>
                            <div className="flex items-center gap-3">
-                              <div className="avatar">
-                                 <div className="mask mask-squircle h-12 w-12">
+                              <div className="">
+                                 <div className="w-12 object-cover">
                                     <img
                                        src={user.image}
                                        alt={user.display_name}
                                     />
                                  </div>
                               </div>
-                              <div>
-                                 <div className="font-bold">{user.display_name}</div>
-                                 <div className="text-sm opacity-50">{user.role}</div>
+                              <div className='static'>
+                                 <div className="text-sm text-gray-500">{user.role}</div>
                               </div>
                            </div>
                         </td>
+                        {/* User Coins */}
+                        <td>{user.name}</td> 
                         {/* User Email */}
                         <td>{user.email}</td>
                         {/* User Role Dropdown */}
@@ -94,6 +97,7 @@ const ManageUsersTable = () => {
                               <option value="worker">Worker</option>
                            </select>
                         </td>
+                        
                         {/* User Coins */}
                         <td>{user.coin}🪙</td>
                         {/* Action Buttons */}
