@@ -46,7 +46,7 @@ const Login = () => {
 
    return (
       <div className=''>
-         <section className=" relative flex size-full max-h-full items-center justify-center bg-loginBG bg-cover px-2 py-6 md:px-12 lg:justify-center lg:p-12 ">
+         <section className=" relative flex size-full max-h-full items-center justify-center bg-[url('https://i.ibb.co.com/Vxx5QKk/loginBG.jpg')] bg-cover px-2 py-6 md:px-12 lg:justify-center lg:p-12 ">
 
 
             {/* content div */}

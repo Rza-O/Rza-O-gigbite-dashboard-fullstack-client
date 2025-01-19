@@ -48,7 +48,7 @@ const Register = () => {
 
    return (
       <div className=''>
-         <section className=" relative flex size-full max-h-full items-center justify-center bg-registerBG bg-cover px-2 py-6 md:px-12 lg:justify-center lg:p-12 ">
+         <section className=" relative flex size-full max-h-full items-center justify-center bg-[url('https://i.ibb.co.com/27pn8b0/register-BG.jpg')] bg-cover px-2 py-6 md:px-12 lg:justify-center lg:p-12 ">
 
             {/* content div */}
             <div className="relative z-10 flex flex-1 flex-col  rounded-3xl border-white/50 border-t bg-white/60 px-4 py-10 backdrop-blur-2xl sm:justify-center md:flex-none md:px-20 lg:rounded-r-none lg:border-t-0 lg:border-l lg:py-24">
@@ -58,7 +58,7 @@ const Register = () => {
 
                   {/* Title and subtitle */}
                   <h1 className="font-semibold text-3xl text-neutral-900 tracking-tighter">
-                     Sign up to buy or work faster, <br />
+                     Sign Up to get and worker and tasks faster, <br />
                      <span className="text-neutral-600">with ease</span>
                   </h1>
                   <p className="mt-4 font-medium text-base text-neutral-500">

@@ -14,8 +14,8 @@ export default withMT({
 				surfer: 'Original Surfer'
 			},
 			backgroundImage: {
-				'registerBG': "url('/registerBG.jpg')",
-				'loginBG': "url('/loginBG.jpg')",
+				'registerBG': "url('/src/assets/registerBG.jpg')",
+				'loginBG': "url('src/assets/loginBG.jpg')",
 			},
 			colors: {
 				primary: '#9cc6e8',
