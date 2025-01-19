@@ -1,8 +1,9 @@
 import useAuth from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { FaSpinner } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -10,8 +11,10 @@ const Login = () => {
    const axiosSecure = useAxiosSecure();
    const { register, handleSubmit, formState: { errors } } = useForm();
    const navigate = useNavigate();
+   const [logging, setLogging] = useState(false);
 
    const handleSocialSignIn = async () => {
+      setLogging(true);
       try {
          const response = await handleGoogleLogin();
          toast.success(`${response?.user?.displayName}, Welcome back!`)
@@ -22,22 +25,28 @@ const Login = () => {
             const role = 'worker';
             const userData = { name, email, image, role }
             const { data } = await axiosSecure.post(`/users/${email}`, userData);
+            setLogging(false);
             navigate('/dashboard')
             // console.log(data)
          }
 
       } catch (error) {
+         setLogging(false)
+         toast.error(error.message)
          console.log(error)
       }
    }
 
    const loginHandler = async (data) => {
+      setLogging(true)
       try {
          const login = await handleLogin(data.email, data.password);
          console.log(login)
+         setLogging(false);
          toast.success(`${login?.user?.displayName}, Welcome back!`)
          navigate('/dashboard')
       } catch (error) {
+         setLogging(false);
          toast.error('Uh oh! Please check your email & password again...')
          console.log(error)
       }
@@ -102,7 +111,7 @@ const Login = () => {
                               placeholder="Your Email"
                               type="email"
                            />
-                           {errors?.email && <p className='text-red-600 text-xs'>{ errors.email.message}</p>}
+                           {errors?.email && <p className='text-red-600 text-xs'>{errors.email.message}</p>}
                         </div>
                         <div className="col-span-full">
                            <label
@@ -112,7 +121,7 @@ const Login = () => {
                               Password
                            </label>
                            <input
-                              {...register('password', {required: "Must input a password"})}
+                              {...register('password', { required: "Must input a password" })}
                               className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-primary-content placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
                               id="password"
                               placeholder="Type password here..."
@@ -122,10 +131,18 @@ const Login = () => {
                         </div>
                         <div className="col-span-full">
                            <button
-                              className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white duration-200 hover:bg-primary-content focus:ring-2 focus:ring-border focus:ring-offset-2"
+                              className={`inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white duration-200 hover:bg-primary-content focus:ring-2 focus:ring-border focus:ring-offset-2 ${logging ? "cursor-not-allowed opacity-70" : "hover:bg-primary-content"
+                                 }`}
                               type="submit"
                            >
-                              Sign in
+                              {logging ? (
+                                 <>
+                                    <FaSpinner className="animate-spin" />
+                                    logging in...
+                                 </>
+                              ) : (
+                                 "Login"
+                              )}
                            </button>
                         </div>
                      </div>

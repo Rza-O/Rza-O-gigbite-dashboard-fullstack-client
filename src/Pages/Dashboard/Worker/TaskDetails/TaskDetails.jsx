@@ -6,8 +6,12 @@ import { format } from "date-fns";
 import DashboardTitle from "@/Components/Dashboard/Shared/Title/DashboardTitle";
 import useAuth from "@/Hooks/useAuth";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+import { FaSpinner } from "react-icons/fa";
+import { useState } from "react";
 
 const TaskDetails = () => {
+   const [submitting, setSubmitting] = useState(false);
    const { user } = useAuth();
    const { id } = useParams();
    console.log(id)
@@ -24,7 +28,9 @@ const TaskDetails = () => {
    const { task_title, buyer, deadline, payable_amount, required_workers, image, _id, task_details, submission_info } = taskDetails || {};
 
 
+
    const handleSubmit = async (e) => {
+      setSubmitting(true);
       e.preventDefault();
       const submission_details = e.target.submission_worker.value;
       const worker_email = user?.email;
@@ -47,6 +53,7 @@ const TaskDetails = () => {
       // sending data to the db
       try {
          const { data } = await axiosSecure.post('/work-submit', submissionData);
+         setSubmitting(false);
          refetch();
          console.log(data)
          Swal.fire({
@@ -68,6 +75,8 @@ const TaskDetails = () => {
             }
          });
       } catch (error) {
+         toast.error('Something went wrong! Try again')
+         setSubmitting(false)
          console.log(error)
       }
 
@@ -120,16 +129,40 @@ const TaskDetails = () => {
                         <label className="label">
                            <span className="label-text">Submission Details</span>
                         </label>
-                        <input type="text" name="submission_worker" placeholder="Put all required fields" className="input input-bordered" required />
+                        <textarea type="text" name="submission_worker" placeholder="Put all required fields" className="textarea textarea-bordered" required />
                      </div>
                      <div className="form-control mt-6">
                         <button
                            disabled={!required_workers}
-                           className="btn bg-secondary hover:bg-primary-dark transition duration-300">Submit</button>
+                           className={`btn bg-secondary hover:bg-primary-dark transition duration-300 ${submitting ? "cursor-not-allowed opacity-70" : "hover:bg-primary-content"
+                              }`}>
+                           {submitting ? (
+                              <>
+                                 <FaSpinner className="animate-spin" />
+                                 Submitting...
+                              </>
+                           ) : (
+                              "Submit"
+                           )}
+                        </button>
                      </div>
                   </form>
                </div>
 
+               {/* <button
+                  className={`inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white duration-200 hover:bg-primary-content focus:ring-2 focus:ring-border focus:ring-offset-2 ${submitting ? "cursor-not-allowed opacity-70" : "hover:bg-primary-content"
+                     }`}
+                  type="submit"
+               >
+                  {submitting ? (
+                     <>
+                        <FaSpinner className="animate-spin" />
+                        Registering...
+                     </>
+                  ) : (
+                     "Register"
+                  )}
+               </button> */}
 
 
             </div>

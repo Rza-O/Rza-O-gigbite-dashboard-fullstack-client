@@ -34,23 +34,31 @@ const MySubmissionsTable = () => {
    return (
       <div>
          <div className="overflow-x-auto h-[530px] md:h-[300px]">
-            <table className="table static ">
-               {/* head */}
-               <thead>
-                  <tr>
-                     <th>#</th>
-                     <th>Task Title</th>
-                     <th>Submission Date</th>
-                     <th>Status</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  {/* row  */}
-                  {
-                     submissions.map((mySubmission, idx) => <MySubmissionsTableRow idx={idx +(currentPage - 1) * itemsPerPage} mySubmission={mySubmission} key={mySubmission._id}></MySubmissionsTableRow>)
-                  }
-               </tbody>
-            </table>
+            {
+               submissions.length > 0 ? (
+                  <table className="table static ">
+                     {/* head */}
+                     <thead>
+                        <tr>
+                           <th>#</th>
+                           <th>Task Title</th>
+                           <th>Submission Date</th>
+                           <th>Status</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {/* row  */}
+                        {
+                           submissions.map((mySubmission, idx) => <MySubmissionsTableRow idx={idx + (currentPage - 1) * itemsPerPage} mySubmission={mySubmission} key={mySubmission._id}></MySubmissionsTableRow>)
+                        }
+                     </tbody>
+                  </table>
+               ) : (
+                     <div>
+                        <p className='text-center text-2xl'>You have not submitted any task yet</p>
+                     </div>
+               )
+            }
          
          </div>
          {/* pagination */}

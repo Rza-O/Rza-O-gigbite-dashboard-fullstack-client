@@ -64,12 +64,6 @@ export function Sidebar() {
             
 
                {/* common */}
-               <ListItem>
-                  <ListItemPrefix>
-                     <UserCircleIcon className="h-5 w-5" />
-                  </ListItemPrefix>
-                  Profile
-               </ListItem>
                <ListItem
                   onClick={handleLogOut}
                >

@@ -16,7 +16,7 @@ const TasksList = () => {
    })
    if (isLoading) return <Loading></Loading>
    return (
-      <div className='w-11/12 mx-auto space-y-6 my-6'>
+      <div className='w-11/12 mx-auto space-y-6 my-6 min-h-[600px]'>
          <DashboardTitle title={'All Tasks Available'} subtitle={'You can find all the active tasks here'}></DashboardTitle>
          <div className=' gap-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-center border items-center'>
             {

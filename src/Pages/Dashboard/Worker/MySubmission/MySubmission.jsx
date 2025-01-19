@@ -10,7 +10,7 @@ const MySubmission = () => {
             <title>Submissions | Dashboard</title>
          </Helmet>
          <DashboardTitle title={'All Your Submissions'} subtitle={'You can find all you submission here'}></DashboardTitle>
-         <div className=''>
+         <div className='min-h-[600px] '>
             <MySubmissionsTable></MySubmissionsTable>
          </div>
       </div>

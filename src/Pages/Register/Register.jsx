@@ -7,6 +7,7 @@ import useAxiosPublic from '@/Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
+import { FaSpinner } from 'react-icons/fa';
 
 const Register = () => {
    const axiosSecure = useAxiosSecure();
@@ -14,8 +15,10 @@ const Register = () => {
    const { updateUserProfile, handleEmailRegister } = useAuth();
    const { register, formState: { errors }, handleSubmit} = useForm();
    const navigate = useNavigate();
+   const [submitting, setSubmitting] = useState(false);
 
    const handleRegister = async (data) => {
+      setSubmitting(true)
       const name = data.name;
       const email = data.email;
       const role = data.role;
@@ -37,8 +40,10 @@ const Register = () => {
          )
          await axiosSecure.post(`/users/${email}`, userData)
          toast.success('You have been Signed up')
+         setSubmitting(false)
          navigate('/dashboard')
       } catch (error) {
+         setSubmitting(false)
          toast.error(error?.message)
          console.log(error);
       }
@@ -208,13 +213,39 @@ const Register = () => {
                         {/* submit */}
                         <div className="col-span-full">
                            <button
-                              className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white duration-200 hover:bg-primary-content focus:ring-2 focus:ring-border focus:ring-offset-2"
+                              className={`inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white duration-200 hover:bg-primary-content focus:ring-2 focus:ring-border focus:ring-offset-2 ${submitting ? "cursor-not-allowed opacity-70" : "hover:bg-primary-content"
+                                 }`}
                               type="submit"
                            >
-                              Sign Up
+                              {submitting ? (
+                                 <>
+                                    <FaSpinner className="animate-spin" />
+                                    Registering...
+                                 </>
+                              ) : (
+                                 "Register"
+                              )}
                            </button>
                         </div>
                      </div>
+
+                     {/* <div className="flex items-center justify-center">
+                        <button
+                           className={`btn btn-wide inline-flex h-12 items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white ${loading ? "cursor-not-allowed opacity-70" : "hover:bg-primary-content"
+                              }`}
+                           type="submit"
+
+                        >
+                           {loading ? (
+                              <>
+                                 <FaSpinner className="animate-spin" />
+                                 Processing...
+                              </>
+                           ) : (
+                              "Add Task"
+                           )}
+                        </button>
+                     </div> */}
 
                      <div className="mt-6">
                         <p className="mx-auto flex text-center font-medium text-black text-sm leading-tight">
