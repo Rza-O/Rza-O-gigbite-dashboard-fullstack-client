@@ -19,7 +19,7 @@ const PaymentHistoryTable = () => {
    console.log(paymentHistory);
    return (
       <div className="overflow-x-auto">
-         <table className="table static">
+         {paymentHistory.length > 0 ? (<table className="table static">
             {/* head */}
             <thead>
                <tr>
@@ -43,7 +43,11 @@ const PaymentHistoryTable = () => {
                   ))
                }
             </tbody>
-         </table>
+         </table>):(
+         <div>
+            <p className='text-center text-2xl min-h-[500px]'>Ypu have not purchased any coin yet</p>
+         </div>
+         )}
       </div>
    );
 };

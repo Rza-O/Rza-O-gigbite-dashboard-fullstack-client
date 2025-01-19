@@ -53,6 +53,7 @@ const AddTaskForm = () => {
          toast.success('Task added successfully')
          refetch();
          setLoading(false)
+         navigate('/dashboard/my-tasks')
          console.log(data)
       } catch (error) {
          setLoading(false)

@@ -12,7 +12,7 @@ const PaymentHistory = () => {
          <div className='mb-6'>
             <DashboardTitle title={'Payment History'} subtitle={'Track all your expenditures here'}></DashboardTitle>
          </div>
-         <div className='w-11/12 mx-auto'>
+         <div className='w-11/12 mx-auto min-h-[600px]'>
             <PaymentHistoryTable></PaymentHistoryTable>
          </div>
       </div>

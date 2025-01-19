@@ -55,7 +55,7 @@ const PaymentForm = ({ coins, price }) => {
 
 
    return (
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-6 min-h-[600px]">
          <h1 className="text-2xl font-bold text-center mb-4">Payment</h1>
          <form onSubmit={handlePay} className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
             <h2 className="mb-4 text-lg font-semibold">You are purchasing {coins} coins for ${price}.</h2>
