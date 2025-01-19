@@ -68,7 +68,7 @@ const MyTasks = () => {
    }
 
    return (
-      <div className='space-y-6 mt-6'>
+      <div className='space-y-6 mt-6 min-h-[600px]'>
          <DashboardTitle title={'All Tasks Added'} subtitle={'Find the record of all the task added'}></DashboardTitle>
          <div className="overflow-x-auto w-11/12 mx-auto ">
             {tasks.length > 0 ? (

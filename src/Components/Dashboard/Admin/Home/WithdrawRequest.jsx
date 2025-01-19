@@ -63,7 +63,7 @@ const WithdrawRequest = ({ refetchStats }) => {
                </table>
             </div>
          ) : (
-            <div>
+            <div className='min-h-[500px]'>
                <p className='text-center text-2xl'>There's no withdrawal request yet</p>
             </div>
          )}

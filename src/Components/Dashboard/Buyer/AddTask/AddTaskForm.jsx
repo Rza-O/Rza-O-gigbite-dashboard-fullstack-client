@@ -8,6 +8,7 @@ import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import useUser from "@/Hooks/useUser";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const AddTaskForm = () => {
    const { user } = useAuth();
@@ -15,8 +16,9 @@ const AddTaskForm = () => {
    const axiosSecure = useAxiosSecure();
    const [uploadImage, setUploadImage] = useState({ image: { name: 'Upload button' } });
    const [startDate, setStartDate] = useState(new Date());
-   const { register, handleSubmit, formState: { errors } } = useForm();
+   const { register, handleSubmit, formState: { errors }, clearErrors } = useForm();
    const [loading, setLoading] = useState(false);
+   const navigate = useNavigate();
 
    const handleAddTask = async (data) => {
       setLoading(true);
@@ -26,7 +28,9 @@ const AddTaskForm = () => {
       const totalCost = required_workers * payable_amount;
       if (totalCost > userData.coin) {
          setLoading(false);
-         return toast.error('insufficient coin')
+
+         toast.error('insufficient coin')
+         return navigate('/dashboard/purchase-coin')
       }
       const photo = uploadImage.image;
       const image = await imageUpload(photo);
@@ -69,7 +73,7 @@ const AddTaskForm = () => {
                      <div className='flex flex-col w-max mx-auto text-center'>
                         <label>
                            <input
-                              {...register('image', { required: "Image is required" })}
+                              {...register('image', { required: "Image is required", })}
                               onChange={(e) => {
                                  const file = e.target.files[0];
                                  if (file) {
@@ -77,6 +81,7 @@ const AddTaskForm = () => {
                                        image: file,
                                        url: URL.createObjectURL(file),
                                     });
+                                    clearErrors('image')
                                  }
                               }}
                               className='text-sm cursor-pointer w-36 hidden'
@@ -88,7 +93,7 @@ const AddTaskForm = () => {
                            />
 
                            <div className='bg-primary-dark text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-primary-content transition-colors duration-300 required'>
-                              {uploadImage?.image?.name}
+                              {uploadImage?.image?.name.substring(0,10)}
                            </div>
                         </label>
                         {errors?.image && <p className='text-red-600 text-xs'>{errors?.image?.message}</p>}
@@ -197,7 +202,7 @@ const AddTaskForm = () => {
                   </label>
                   <input
                      {...register('submission_info', { required: 'info is required' })}
-                     className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-primary-content placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm"
+                     className="block h-12 w-full appearance-none rounded-xl bg-white px-4 py-2 text-primary-content placeholder-neutral-300 duration-200 focus:outline-none focus:ring-neutral-300 sm:text-sm textarea"
                      id="submission_info"
                      name='submission_info'
                      placeholder="Type of proof after completion"

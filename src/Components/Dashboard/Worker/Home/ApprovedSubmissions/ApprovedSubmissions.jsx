@@ -52,7 +52,7 @@ const ApprovedSubmissions = () => {
                </table>
             ) : (
                   <div>
-                     <p className='text-center text-2xl'>There's no approved task yet</p>
+                     <p className='text-center text-2xl min-h-[500px]'>There's no approved task yet</p>
                   </div>
             )
          }

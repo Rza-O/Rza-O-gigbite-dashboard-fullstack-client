@@ -39,6 +39,7 @@ const Register = () => {
          toast.success('You have been Signed up')
          navigate('/dashboard')
       } catch (error) {
+         toast.error(error?.message)
          console.log(error);
       }
    }

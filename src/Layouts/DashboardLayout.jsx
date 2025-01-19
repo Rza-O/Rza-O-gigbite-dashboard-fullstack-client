@@ -1,3 +1,4 @@
+import DashboardFooter from '@/Components/Dashboard/Shared/Footer/DashboardFooter';
 import DashboardNavbar from '@/Components/Dashboard/Shared/Navbar/DashboardNavbar';
 import { Sidebar } from '@/Components/Dashboard/Shared/Sidebar/Common/Sidebar';
 import Loading from '@/Components/Shared/LoadingSpinner/Loading';
@@ -16,6 +17,7 @@ const DashboardLayout = () => {
          <div className='flex-1'>
             <DashboardNavbar></DashboardNavbar>
             <Outlet></Outlet>
+            <DashboardFooter></DashboardFooter>
          </div>
       </div>
    );

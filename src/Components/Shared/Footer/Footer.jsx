@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaMapPin } from 'react-icons/fa';
 import { HiPhone } from "react-icons/hi2";
 import { MdEmail } from 'react-icons/md';
+import { LinkedInLogoIcon } from '@radix-ui/react-icons';
 
 
 const Footer = () => {
@@ -27,14 +28,9 @@ const Footer = () => {
                         <Link to='/'>Home</Link>
                      </li>
                      <li>
-                        <Link to='/available-foods'>Available Foods</Link>
+                        <Link target='_blank' to='https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-Rza-O'>Join as Developer</Link>
                      </li>
-                     <li>
-                        <Link to='/our-work'>Our Work</Link>
-                     </li>
-                     <li>
-                        <Link to='/contact'>Contact</Link>
-                     </li>
+                     
                   </ul>
                </div>
 
@@ -43,34 +39,37 @@ const Footer = () => {
 
                   <p className='flex items-center gap-1'><span className='font-semibold'><FaMapPin /></span> 221B, Baker St, London, UK</p>
                   <p className='flex items-center gap-1'><HiPhone className='font-semibold' /> +8801970853705</p>
-                  <p className='flex items-center gap-1'><MdEmail className='font-semibold text-base' /> contact@ShareAMeal.co</p>
+                  <p className='flex items-center gap-1'><MdEmail className='font-semibold text-base' /> shahreza.dev@.com</p>
                </div>
 
                <div className="order-2 md:order-none flex w-full md:max-w-xs items-center justify-center md:justify-end gap-4">
-                  <Link
-                     href="#"
+                  <a
+                     href="https://x.com/andshahreza"
                      className="inline-flex h-8 items-center rounded-full border border-gray-200 dark:border-gray-800 shadow-sm w-8 hover:scale-125 hover:rotate-12 transition-transform p-2"
                      prefetch={false}
+                     target='_blank'
                   >
                      <span className="sr-only">Twitter</span>
                      <TwitterIcon className="w-4 h-4 fill-twitter" />
-                  </Link>
-                  <Link
-                     href="#"
+                  </a>
+                  <a
+                     href="https://github.com/Rza-O"
                      className="inline-flex h-8 items-center rounded-full border border-gray-200 dark:border-gray-800 shadow-sm w-8 hover:scale-125 hover:rotate-12 transition-transform p-2"
                      prefetch={false}
+                     target='_blank'
                   >
                      <span className="sr-only">GitHub</span>
                      <GithubIcon className="w-4 h-4 fill-github" />
-                  </Link>
-                  <Link
-                     href="#"
+                  </a>
+                  <a
+                     href="https://www.linkedin.com/in/andshahreza/"
                      className="inline-flex h-8 items-center rounded-full border border-gray-200 dark:border-gray-800 shadow-sm w-8 hover:scale-125 hover:rotate-12 transition-transform p-2"
                      prefetch={false}
+                     target='_blank'
                   >
-                     <span className="sr-only">YouTube</span>
-                     <PlayIcon className="w-4 h-4 fill-youtube" />
-                  </Link>
+                     <span className="sr-only">Linkedin</span>
+                     <LinkedInLogoIcon className="w-4 h-4 fill-youtube" />
+                  </a>
                </div>
             </div>
          </div>

@@ -6,12 +6,12 @@ const StatCard = ({ title, value, percentage, isIncrease }) => {
          <h4 className="text-gray-500 font-medium">{title}</h4>
          <div className="flex items-center justify-between mt-2">
             <p className="text-xl font-bold text-gray-900">{value}</p>
-            {/* <p
+            <p
                className={`text-sm ${isIncrease ? 'text-green-500' : 'text-red-500'
                   }`}
             >
                {isIncrease ? `+${percentage}%` : `-${percentage}%`}
-            </p> */}
+            </p>
          </div>
       </div>
    );

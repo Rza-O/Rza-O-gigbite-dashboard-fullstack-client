@@ -4,9 +4,11 @@ import logoGray from '../../../assets/logos/logogray.png'
 import { Link, useLocation } from 'react-router-dom';
 import useAuth from '@/Hooks/useAuth';
 import defaultAvatar from '../../../assets/avatar.png'
+import useUser from '@/Hooks/useUser';
 
 const Navbar = () => {
    const { user, logOut } = useAuth();
+   const [userData] = useUser();
 
    const [isScroll, setIsScroll] = useState(false);
    const location = useLocation();
@@ -33,7 +35,7 @@ const Navbar = () => {
    const privateLinks = <>
       <li><Link to='/dashboard'>Dashboard</Link></li>
       <li><Link to='https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Rza-O'>Join as Developer</Link></li>
-      <li><Link>Coins</Link></li>
+      <li><Link>🪙{userData?.coin}</Link></li>
    </>
 
 
@@ -89,9 +91,9 @@ const Navbar = () => {
                               {user?.photoURL ? <img
                                  referrerPolicy='no-referrer'
                                  alt="Tailwind CSS Navbar component"
-                                 src={user?.photoURL} /> : 
+                                 src={user?.photoURL} /> :
                                  <img src={defaultAvatar} alt="" />
-                                 }
+                              }
 
                            </div>
                         </div>
