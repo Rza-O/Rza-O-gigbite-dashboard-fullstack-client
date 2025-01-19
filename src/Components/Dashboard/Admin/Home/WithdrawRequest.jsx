@@ -34,8 +34,8 @@ const WithdrawRequest = ({ refetchStats }) => {
    return (
       <div>
          {withdrawRequests.length > 0 ? (
-            <div className="overflow-x-auto ">
-               <table className="table static">
+            <div className="overflow-x-auto min-h-[600px]">
+               <table className="table static ">
                   {/* head */}
                   <thead>
                      <tr>

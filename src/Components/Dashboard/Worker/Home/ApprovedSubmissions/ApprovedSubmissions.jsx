@@ -25,31 +25,32 @@ const ApprovedSubmissions = () => {
 
 
    return (
-      <div className="overflow-x-auto  container mx-auto">
+      <div className="overflow-x-auto container mx-auto">
          <div className='my-6'>
             <DashboardTitle title='All Approved Submission'></DashboardTitle>
          </div>
          {
             mySubmissions.length > 0 ? (
-               <table className="table static">
-                  {/* head */}
-                  <thead>
-                     <tr>
-                        <th>#</th>
-                        <th>Task Title</th>
-                        <th>Payable Amount</th>
-                        <th>Buyer Name</th>
-                        <th>Status</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     {/* row  */}
-                     {
-                        mySubmissions.map((mySubmission, idx) => <ApprovedSubmissionsTableRow idx={idx} mySubmission={mySubmission} key={mySubmission._id}></ApprovedSubmissionsTableRow>)
-                     }
-
-                  </tbody>
-               </table>
+               <div className='min-h-[600px]'>
+                  <table className="table static ">
+                     {/* head */}
+                     <thead>
+                        <tr>
+                           <th>#</th>
+                           <th>Task Title</th>
+                           <th>Payable Amount</th>
+                           <th>Buyer Name</th>
+                           <th>Status</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {/* row  */}
+                        {
+                           mySubmissions.map((mySubmission, idx) => <ApprovedSubmissionsTableRow idx={idx} mySubmission={mySubmission} key={mySubmission._id}></ApprovedSubmissionsTableRow>)
+                        }
+                     </tbody>
+                  </table>
+               </div>
             ) : (
                   <div>
                      <p className='text-center text-2xl min-h-[500px]'>There's no approved task yet</p>
