@@ -16,6 +16,8 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { RiDoubleQuotesL, RiDoubleQuotesR } from 'react-icons/ri';
 
+import { motion } from "motion/react";
+
 
 const Testimonial = () => {
    return (
@@ -23,7 +25,11 @@ const Testimonial = () => {
          <Title heading={"Testimonials"} subHeading={"Our service is what our customer needed"}></Title>
 
 
-         <div className='2xl:container w-11/12 mx-auto border rounded-lg shadow-md bg-foreground p-11'>
+         <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{type:'tween', stiffness: 300, duration: 0.3, delay: 0.2}}
+            className='2xl:container w-11/12 mx-auto border rounded-lg shadow-md bg-foreground p-11'>
             <Swiper
                pagination={{
                   dynamicBullets: true,
@@ -56,7 +62,7 @@ const Testimonial = () => {
                   </div>
                </SwiperSlide>
             </Swiper>
-         </div>
+         </motion.div>
 
 
       </div>

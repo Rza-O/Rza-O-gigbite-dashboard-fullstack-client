@@ -26,34 +26,40 @@ const BestWorkers = () => {
             {
                bestWorkers.map((worker, idx) => (
                   <motion.div
-                     key={idx}
-                     className="relative w-28 h-28 rounded-full overflow-hidden group mx-auto"
-                     initial="rest"
-                     whileHover="hover"
-                     animate="rest"
+                     initial={{  y: 0 }}
+                     whileHover={{  y: -20 }}
+                     transition={{ duration: 0.3, type:'tween', stiffness: 300 }}
                   >
-                     {/* Image */}
-                     <motion.img
-                        src={worker.image}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        alt="Worker"
-                        variants={{
-                           rest: { scale: 1 },
-                           hover: { scale: 0.95 },
-                        }}
-                        transition={{ type: "tween", stiffness: 300 }}
-                     />
-                     {/* Coin Details */}
                      <motion.div
-                        className="absolute bottom-0 left-0 right-0 text-center text-primary-content bg-primary p-2 rounded-b-full"
-                        variants={{
-                           rest: { y: "100%" },
-                           hover: { y: "0%" },
-                        }}
-                        transition={{ type: "tween", stiffness: 300 }}
+                        key={idx}
+                        className="relative w-28 h-28 rounded-full overflow-hidden group mx-auto"
+                        initial="rest"
+                        whileHover="hover"
+                        animate="rest"
                      >
-                        <p className="text-sm">Coin Earned</p>
-                        <p className="text-base font-bold">🪙{worker.coin}</p>
+                        {/* Image */}
+                        <motion.img
+                           src={worker.image}
+                           className="absolute inset-0 w-full h-full object-cover"
+                           alt="Worker"
+                           variants={{
+                              rest: { scale: 1 },
+                              hover: { scale: 0.95 },
+                           }}
+                           transition={{ type: "tween", stiffness: 300 }}
+                        />
+                        {/* Coin Details */}
+                        <motion.div
+                           className="absolute bottom-0 left-0 right-0 text-center text-primary-content bg-primary p-2 rounded-b-full"
+                           variants={{
+                              rest: { y: "100%" },
+                              hover: { y: "0%" },
+                           }}
+                           transition={{ type: "tween", stiffness: 300 }}
+                        >
+                           <p className="text-sm">Coin Earned</p>
+                           <p className="text-base font-bold">🪙{worker.coin}</p>
+                        </motion.div>
                      </motion.div>
                   </motion.div>
                ))
