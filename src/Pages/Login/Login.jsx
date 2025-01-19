@@ -14,6 +14,7 @@ const Login = () => {
    const handleSocialSignIn = async () => {
       try {
          const response = await handleGoogleLogin();
+         toast.success(`${response?.user?.displayName}, Welcome back!`)
          if (response.user) {
             const name = response.user?.displayName;
             const email = response.user?.email;
@@ -21,7 +22,8 @@ const Login = () => {
             const role = 'worker';
             const userData = { name, email, image, role }
             const { data } = await axiosSecure.post(`/users/${email}`, userData);
-            console.log(data)
+            navigate('/dashboard')
+            // console.log(data)
          }
 
       } catch (error) {
@@ -34,7 +36,7 @@ const Login = () => {
          const login = await handleLogin(data.email, data.password);
          console.log(login)
          toast.success(`${login?.user?.displayName}, Welcome back!`)
-         // navigate('/')
+         navigate('/dashboard')
       } catch (error) {
          toast.error('Uh oh! Please check your email & password again...')
          console.log(error)

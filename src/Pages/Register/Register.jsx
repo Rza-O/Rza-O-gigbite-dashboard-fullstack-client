@@ -15,11 +15,6 @@ const Register = () => {
    const { register, formState: { errors }, handleSubmit} = useForm();
    const navigate = useNavigate();
 
-   // name
-   // email
-   // image
-   // role
-
    const handleRegister = async (data) => {
       const name = data.name;
       const email = data.email;
@@ -42,7 +37,7 @@ const Register = () => {
          )
          await axiosSecure.post(`/users/${email}`, userData)
          toast.success('You have been Signed up')
-         navigate('/')
+         navigate('/dashboard')
       } catch (error) {
          console.log(error);
       }

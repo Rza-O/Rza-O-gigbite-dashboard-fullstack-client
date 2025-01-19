@@ -64,25 +64,10 @@ const DashboardNavbar = () => {
                      </svg>
                   </label>
                </div>
-               {/* <div className="mx-2 flex-1 px-2">Navbar Title</div> */}
                <div className=" navbar-end flex-1">
                   <ul className="menu menu-horizontal flex items-center">
                      {/* Navbar menu content here */}
 
-                     {/* content */}
-                     {/* <div>
-                        <div className='flex'>
-                           <p>Coin: </p>
-                           <p>Role: </p>
-                           <p>User Name</p>
-                        </div>
-                        <div></div>
-                     </div> */}
-                     {/* <div className='flex gap-3 mr-3'>
-                        <li>Coin: <span className='font-semibold'>50🪙</span></li>
-                        <li>Role: <span className='font-semibold'>Worker</span></li>
-                        <li>Name: <span className='font-semibold'>Sherlock Holmes</span></li>
-                     </div> */}
                      <div className='hidden lg:flex font-ubuntu'>
                         <li><a><FaUserAlt className='text-lg' /> <span className='font-semibold'>{userData?.name}</span></a></li>
 
@@ -108,58 +93,59 @@ const DashboardNavbar = () => {
                            <li><a>Role: <span className='font-semibold'>{userData?.role}</span></a></li>
                         </ul>
                      </div>
-                     {/* <li><a>Navbar Item 1</a></li> */}
 
                      {/* indicator will be hidden and there will be message 'no new notification and if there's unread notification then the indicator will be shown' */}
-                     <div className="dropdown dropdown-end ">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                           <div className="indicator">
-                              <svg
-                                 xmlns="http://www.w3.org/2000/svg"
-                                 className="h-5 w-5"
-                                 fill="none"
-                                 viewBox="0 0 24 24"
-                                 stroke="currentColor">
-                                 <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                              </svg>
-                              {unreadCount > 0 && <span className="badge badge-xs badge-secondary indicator-item"></span>}
+                     {userData?.role === 'admin' || 
+                        <div className="dropdown dropdown-end ">
+                           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                              <div className="indicator">
+                                 <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path
+                                       strokeLinecap="round"
+                                       strokeLinejoin="round"
+                                       strokeWidth="2"
+                                       d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                 </svg>
+                                 {unreadCount > 0 && <span className="badge badge-xs badge-secondary indicator-item"></span>}
+                              </div>
                            </div>
-                        </div>
-                        <div
-                           tabIndex={0}
-                           className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
-                           <div className="card-body ">
-                              {/* this is where notification body will be */}
-                              {
-                                 notifications.length > 0 ? (
-                                    <ul className='max-h-48 overflow-y-auto divide-y divide-gray-300'>
-                                       {
-                                          notifications.map((notification) => (
-                                             <li
-                                                className={`py-2 px-2 rounded-lg cursor-pointer ${notification?.status === 'unread' ? 'hover:bg-primary/30' : ''}`}
-                                                key={notification._id}
-                                                onClick={() => handleNotificationClick(notification)}
-                                             >
-                                                <div className='flex flex-col'>
-                                                   <p>{notification?.message}</p>
-                                                   <small className='text-gray-700'>{ format(new Date(notification?.time), "P")}</small>
-                                                </div>
-                                             </li>
-                                          ))
-                                       }
-                                    </ul>
-                                 ) : (
-                                    <p className="text-sm text-black">No new notifications</p>
-                                 )
-                              }
+                           <div
+                              tabIndex={0}
+                              className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
+                              <div className="card-body ">
+                                 {/* this is where notification body will be */}
+                                 {
+                                    notifications.length > 0 ? (
+                                       <ul className='max-h-48 overflow-y-auto divide-y divide-gray-300'>
+                                          {
+                                             notifications.map((notification) => (
+                                                <li
+                                                   className={`py-2 px-2 rounded-lg cursor-pointer ${notification?.status === 'unread' ? 'hover:bg-primary/30' : ''}`}
+                                                   key={notification._id}
+                                                   onClick={() => handleNotificationClick(notification)}
+                                                >
+                                                   <div className='flex flex-col'>
+                                                      <p>{notification?.message}</p>
+                                                      <small className='text-gray-700'>{format(new Date(notification?.time), "P")}</small>
+                                                   </div>
+                                                </li>
+                                             ))
+                                          }
+                                       </ul>
+                                    ) : (
+                                       <p className="text-sm text-black">No new notifications</p>
+                                    )
+                                 }
 
+                              </div>
                            </div>
                         </div>
-                     </div>
+                     }
                      {/* <li><a>Navbar Item 2</a></li> */}
 
                   </ul>

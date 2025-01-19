@@ -24,12 +24,14 @@ import AdminRoute from './AdminRoute';
 import AdminHome from '@/Pages/Dashboard/Admin/Home/AdminHome';
 import ManageUsers from '@/Pages/Dashboard/Admin/ManageUsers/ManageUsers';
 import ManageTasks from '@/Pages/Dashboard/Admin/ManageTasks/ManageTasks';
+import ErrorPage from '@/Pages/Error/ErrorPage';
 
 
 const routes = createBrowserRouter([
    {
       path: '/',
       element: <MainLayout></MainLayout>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
          {
             index: true,
@@ -47,6 +49,7 @@ const routes = createBrowserRouter([
    },
    {
       path: 'dashboard',
+      errorElement: <ErrorPage></ErrorPage>,
       element:
          <PrivateRoute>
             <DashboardLayout></DashboardLayout>
