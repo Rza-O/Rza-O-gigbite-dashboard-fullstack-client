@@ -3,7 +3,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { MdOutlinePreview } from "react-icons/md";
 
-const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDetails, refetch }) => {
+const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDetails, refetch, refetchStats }) => {
    const { worker_name, task_title, payable_amount, submission_details, _id } = singleSubmission || {};
    const axiosSecure = useAxiosSecure();
 
@@ -12,6 +12,7 @@ const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDe
          const { data } = await axiosSecure.patch(`/submission/status/${_id}`, {status: 'approved'})
          console.log(data)
          refetch();
+         refetchStats()
          toast.success('Task Approved Successfully!')
       } catch (error) {
          console.log(error)
@@ -25,6 +26,7 @@ const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDe
          const { data } = await axiosSecure.patch(`/submission/status/${_id}`, { status: 'rejected' })
          console.log(data)
          refetch();
+         refetchStats();
          toast.success('Task Rejected Successfully!')
       } catch (error) {
          console.log(error)

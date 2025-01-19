@@ -6,7 +6,7 @@ import useAuth from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
 import Loading from '@/Components/Shared/LoadingSpinner/Loading';
 
-const TaskToReview = () => {
+const TaskToReview = ({ refetchStats }) => {
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [submissionDetails, setSubmissionDetails] = useState('');
    const { user, loading } = useAuth();
@@ -46,7 +46,7 @@ const TaskToReview = () => {
                      <tbody>
                         {/* row 1 */}
                         {
-                           myWorkSubmissions.map((singleSubmission, idx) => <ReviewTableRow refetch={refetch} setIsModalOpen={setIsModalOpen} idx={idx} setSubmissionDetails={setSubmissionDetails} singleSubmission={singleSubmission} key={singleSubmission._id}></ReviewTableRow>)
+                           myWorkSubmissions.map((singleSubmission, idx) => <ReviewTableRow refetch={refetch} refetchStats={refetchStats} setIsModalOpen={setIsModalOpen} idx={idx} setSubmissionDetails={setSubmissionDetails} singleSubmission={singleSubmission} key={singleSubmission._id}></ReviewTableRow>)
                         }
                      </tbody>
                   </table>
