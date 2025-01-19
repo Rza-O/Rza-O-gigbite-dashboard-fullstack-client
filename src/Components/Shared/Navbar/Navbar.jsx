@@ -35,7 +35,7 @@ const Navbar = () => {
    const privateLinks = <>
       <li><Link to='/dashboard'>Dashboard</Link></li>
       <li><Link to='https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Rza-O'>Join as Developer</Link></li>
-      <li><Link>🪙{userData?.coin}</Link></li>
+      <li><Link to='/dashboard'>🪙{userData?.coin}</Link></li>
    </>
 
 
@@ -63,7 +63,7 @@ const Navbar = () => {
                   </div>
                   <ul
                      tabIndex={0}
-                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                     className="menu menu-sm dropdown-content bg-base-100 rounded-box text-primary-content mt-3 w-52 p-2 shadow z-50">
                      {user ? privateLinks : publicLinks}
                   </ul>
                </div>

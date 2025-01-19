@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import freelancer from '../../../assets/banner/whitehairwoman.mp4'
 import { motion } from "motion/react"
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
    const [isScroll, setIsScroll] = useState(false);
@@ -30,7 +31,7 @@ const Banner = () => {
                   className='text-lg text-primary-light'>Complete Tasks, Earn Rewards</motion.p>
                <h2 className='text-6xl max-w-4xl leading'>Maximize Productivity With <br /> <span className='font-surfer font-semibold text-primary-dark'>Freelance Marketplace</span> <br />Solution</h2>
                <div>
-                  <button className={isScroll ? 'btn bg-secondary border-none px-9' : 'btn bg-primary-light border-none px-9'}>Get Started</button>
+                  <Link to='/login'><button className={isScroll ? 'btn bg-secondary border-none px-9' : 'btn bg-primary-light border-none px-9'}>Get Started</button></Link>
                </div>
             </motion.div>
          </div>

@@ -13,6 +13,10 @@ export default withMT({
 				nun: 'Nunito',
 				surfer: 'Original Surfer'
 			},
+			backgroundImage: {
+				'registerBG': "url('/registerBG.jpg')",
+				'loginBG': "url('/loginBG.jpg')",
+			},
 			colors: {
 				primary: '#9cc6e8',
 				'primary-content': '#19476c',
