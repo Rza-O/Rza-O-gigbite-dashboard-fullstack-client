@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 const FAQ = () => {
    return (
-      <div className='2xl:container  mx-auto lg:flex my-8 gap-8 items-center space-y-6 w-11/12 pb-20'>
+      <div className='2xl:container  mx-auto lg:flex my-8 gap-8 items-center space-y-6 w-11/12 pb-20 overflow-hidden'>
          {/* text part */}
          <motion.div
             initial={{ opacity: 0, x: -50 }}

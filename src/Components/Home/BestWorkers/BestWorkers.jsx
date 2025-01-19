@@ -26,12 +26,13 @@ const BestWorkers = () => {
             {
                bestWorkers.map((worker, idx) => (
                   <motion.div
-                     initial={{  y: 0 }}
-                     whileHover={{  y: -20 }}
-                     transition={{ duration: 0.3, type:'tween', stiffness: 300 }}
+                     key={idx}
+                     initial={{ y: 0 }}
+                     whileHover={{ y: -20 }}
+                     transition={{ duration: 0.3, type: 'tween', stiffness: 300 }}
                   >
                      <motion.div
-                        key={idx}
+
                         className="relative w-28 h-28 rounded-full overflow-hidden group mx-auto"
                         initial="rest"
                         whileHover="hover"

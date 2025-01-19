@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 
 const StartPosting = () => {
    return (
-      <div className='md:flex w-11/12 2xl:container mx-auto justify-between items-center'>
+      <div className='md:flex w-11/12 2xl:container mx-auto justify-between items-center overflow-hidden'>
          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className='w-full'>
+            className='w-full '>
             <img src={selectFrom} className=' w-full' alt="" />
          </motion.div>
          <motion.div
