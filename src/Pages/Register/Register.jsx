@@ -229,24 +229,6 @@ const Register = () => {
                         </div>
                      </div>
 
-                     {/* <div className="flex items-center justify-center">
-                        <button
-                           className={`btn btn-wide inline-flex h-12 items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white ${loading ? "cursor-not-allowed opacity-70" : "hover:bg-primary-content"
-                              }`}
-                           type="submit"
-
-                        >
-                           {loading ? (
-                              <>
-                                 <FaSpinner className="animate-spin" />
-                                 Processing...
-                              </>
-                           ) : (
-                              "Add Task"
-                           )}
-                        </button>
-                     </div> */}
-
                      <div className="mt-6">
                         <p className="mx-auto flex text-center font-medium text-black text-sm leading-tight">
                            Already have an account?

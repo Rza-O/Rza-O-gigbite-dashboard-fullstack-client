@@ -42,9 +42,9 @@ const WorkerStatsCard = () => {
       <div className='p-6'>
 
          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto">
-            <StatCard title="Total Submission" value={totalSubmission} percentage="45.0" isIncrease />
-            <StatCard title="Submission Pending" value={pendingSubmission} percentage="12.5" />
-            <StatCard title="Total Earnings" value={`🪙 ${totalEarnings}`} percentage="35.2" isIncrease />
+            <StatCard title="Total Submission" value={`${isLoading? 0 : totalSubmission}`} percentage="45.0" isIncrease />
+            <StatCard title="Submission Pending" value={`${isLoading? 0 :pendingSubmission}`} percentage="12.5" />
+            <StatCard title="Total Earnings" value={`🪙 ${isLoading? 0 : totalEarnings}`} percentage="35.2" isIncrease />
          </div>
       </div>
    );

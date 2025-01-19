@@ -149,22 +149,6 @@ const TaskDetails = () => {
                   </form>
                </div>
 
-               {/* <button
-                  className={`inline-flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary-dark px-5 py-3 font-medium text-white duration-200 hover:bg-primary-content focus:ring-2 focus:ring-border focus:ring-offset-2 ${submitting ? "cursor-not-allowed opacity-70" : "hover:bg-primary-content"
-                     }`}
-                  type="submit"
-               >
-                  {submitting ? (
-                     <>
-                        <FaSpinner className="animate-spin" />
-                        Registering...
-                     </>
-                  ) : (
-                     "Register"
-                  )}
-               </button> */}
-
-
             </div>
          </div>
       </div>
