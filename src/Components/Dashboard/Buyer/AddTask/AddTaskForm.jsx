@@ -94,7 +94,7 @@ const AddTaskForm = () => {
                            />
 
                            <div className='bg-primary-dark text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-primary-content transition-colors duration-300 required'>
-                              {uploadImage?.image?.name.substring(0,10)}
+                              {uploadImage?.image?.name.substring(0,13)}
                            </div>
                         </label>
                         {errors?.image && <p className='text-red-600 text-xs'>{errors?.image?.message}</p>}
