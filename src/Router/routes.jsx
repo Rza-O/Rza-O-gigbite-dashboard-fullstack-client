@@ -25,6 +25,8 @@ import AdminHome from '@/Pages/Dashboard/Admin/Home/AdminHome';
 import ManageUsers from '@/Pages/Dashboard/Admin/ManageUsers/ManageUsers';
 import ManageTasks from '@/Pages/Dashboard/Admin/ManageTasks/ManageTasks';
 import ErrorPage from '@/Pages/Error/ErrorPage';
+import Contact from '@/Pages/Contact/Contact';
+import About from '@/Pages/About/About';
 
 
 const routes = createBrowserRouter([
@@ -44,7 +46,15 @@ const routes = createBrowserRouter([
          {
             path: 'register',
             element: <Register></Register>
-         }
+         },
+         {
+            path: 'contact',
+            element: <Contact></Contact>
+         },
+         {
+            path: 'about',
+            element: <About />
+         },
       ]
    },
    {

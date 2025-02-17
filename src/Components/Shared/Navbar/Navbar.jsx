@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../../../assets/logos/primaryLogo.png'
 import logoGray from '../../../assets/logos/logogray.png'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import useAuth from '@/Hooks/useAuth';
 import defaultAvatar from '../../../assets/avatar.png'
 import useUser from '@/Hooks/useUser';
@@ -29,12 +29,18 @@ const Navbar = () => {
 
 
    const publicLinks = <>
-      <li><Link to='https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Rza-O'>Join as Developer</Link></li>
+      <li><NavLink className={({ isActive }) =>
+      isActive ? "focus:text-secondary-dark" : "hover:text-secondary-dark"} to={'/'}>Home</NavLink></li>
+      <li><NavLink className={({ isActive }) =>
+         isActive ? "focus:text-secondary-dark" : "hover:text-secondary-dark"} to={'/about'}>About</NavLink></li>
+      <li><NavLink className={({ isActive }) =>
+      isActive ? " focus:text-secondary-dark" : "hover:text-secondary-dark"} to={'/contact'}>Contact </NavLink></li>
    </>
 
    const privateLinks = <>
+      <li><Link to={'/'}>Home</Link></li>
       <li><Link to='/dashboard'>Dashboard</Link></li>
-      <li><Link to='https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-Rza-O'>Join as Developer</Link></li>
+      <li><Link to='https://github.com/Rza-O/Rza-O-gigbite-dashboard-fullstack-client'>Join as Developer</Link></li>
       <li><Link to='/dashboard'>🪙{userData?.coin}</Link></li>
    </>
 
