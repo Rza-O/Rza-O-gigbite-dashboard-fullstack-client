@@ -10,10 +10,10 @@ const About = () => {
       { value: 500, suffix: "+", label: "Active Buyers Monthly" },
    ];
    return (
-      <section className="bg-base-100">
-         {/* Hero Section */}
+      <section className="">
+
          <div className="container mx-auto px-6 py-16 grid md:grid-cols-2 gap-8 items-center">
-            {/* Left Side: Heading & CTA */}
+
             <motion.div
                className="space-y-6"
                initial={{ opacity: 0, x: -40 }}
@@ -30,7 +30,7 @@ const About = () => {
                <Link to={'/login'}><button className="btn bg-primary-dark hover:bg-secondary-light">Sign Up for Free</button></Link>
             </motion.div>
 
-            {/* Right Side: Illustration/Image */}
+
             <motion.div
                className="flex justify-center"
                initial={{ opacity: 0, x: 40 }}
@@ -45,7 +45,7 @@ const About = () => {
             </motion.div>
          </div>
 
-         {/* Middle Section: Subtitle & Info */}
+
          <div className="container mx-auto px-6 md:px-6 py-16 text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-content">
                The Fastest Way to Get Micro Tasks Done
@@ -57,8 +57,8 @@ const About = () => {
             </p>
          </div>
 
-         {/* Stats Section */}
-         <section className="py-12 bg-secondary-light/10">
+
+         <section className="py-12 bg-secondary-light/20">
             <div className="container mx-auto text-center">
                <h2 className="text-3xl font-lobster font-medium text-secondary-dark mb-4">
                   Make Your Goals Reachable

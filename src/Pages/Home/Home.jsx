@@ -6,14 +6,16 @@ import FAQ from '@/Components/Home/FAQ/FAQ';
 import StartPosting from '@/Components/Home/StartPosting/StartPosting';
 import BestWorkers from '@/Components/Home/BestWorkers/BestWorkers';
 import { Helmet } from 'react-helmet-async';
+import ChartsHome from '@/Components/Home/Charts/ChartsHome';
 
 const Home = () => {
    return (
-      <div className='space-y-20'>
+      <div className='space-y-14'>
          <Helmet>
             <title>Home | GigBite</title>
          </Helmet>
          <Banner></Banner>
+         <ChartsHome></ChartsHome>
          {/* Here will be top workers section */}
          <BestWorkers></BestWorkers>
          <NeedSomething></NeedSomething>
