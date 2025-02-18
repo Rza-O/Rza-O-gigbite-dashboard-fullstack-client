@@ -38,7 +38,12 @@ const Navbar = () => {
    </>
 
    const privateLinks = <>
-      <li><Link to={'/'}>Home</Link></li>
+      <li><NavLink className={({ isActive }) =>
+         isActive ? "focus:text-secondary-dark" : "hover:text-secondary-dark"} to={'/'}>Home</NavLink></li>
+      <li><NavLink className={({ isActive }) =>
+         isActive ? "focus:text-secondary-dark" : "hover:text-secondary-dark"} to={'/about'}>About</NavLink></li>
+      <li><NavLink className={({ isActive }) =>
+         isActive ? " focus:text-secondary-dark" : "hover:text-secondary-dark"} to={'/contact'}>Contact </NavLink></li>
       <li><Link to='/dashboard'>Dashboard</Link></li>
       <li><Link to='https://github.com/Rza-O/Rza-O-gigbite-dashboard-fullstack-client'>Join as Developer</Link></li>
       <li><Link to='/dashboard'>🪙{userData?.coin}</Link></li>

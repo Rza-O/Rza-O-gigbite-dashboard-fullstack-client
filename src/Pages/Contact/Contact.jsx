@@ -12,7 +12,6 @@ const Contact = () => {
    }
 
 
-
    return (
       <div className='w-full min-h-screen flex items-center justify-center  bg-[url("../../../src/assets/Contour_Line.svg")]  bg-cover '>
          <div className="container mx-auto flex justify-center items-center">
