@@ -8,6 +8,7 @@ import BestWorkers from '@/Components/Home/BestWorkers/BestWorkers';
 import { Helmet } from 'react-helmet-async';
 import ChartsHome from '@/Components/Home/Charts/ChartsHome';
 import Newsletter from '@/Components/Home/Newsletter/Newsletter';
+import WhyChooseUs from '@/Components/Home/WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
    return (
@@ -20,6 +21,7 @@ const Home = () => {
          {/* Here will be top workers section */}
          <BestWorkers></BestWorkers>
          <NeedSomething></NeedSomething>
+         <WhyChooseUs />
          <Testimonial></Testimonial>
          <Newsletter />
          <FAQ></FAQ>
