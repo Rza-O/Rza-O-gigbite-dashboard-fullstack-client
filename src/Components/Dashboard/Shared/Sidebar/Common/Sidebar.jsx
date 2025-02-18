@@ -64,6 +64,17 @@ export function Sidebar() {
             
 
                {/* common */}
+               <Link to='/dashboard/profile'>
+                  <ListItem
+                  
+                  >
+                     <ListItemPrefix>
+                        <UserCircleIcon className="h-5 w-5" />
+                     </ListItemPrefix>
+                     Profile
+                  </ListItem>
+                  
+               </Link>
                <ListItem
                   onClick={handleLogOut}
                >

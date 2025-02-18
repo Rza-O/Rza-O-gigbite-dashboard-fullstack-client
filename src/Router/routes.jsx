@@ -1,32 +1,32 @@
-import React from 'react';
+import Payment from '@/Components/Dashboard/Buyer/PurchaseCoin/Payment';
+import DashboardLayout from '@/Layouts/DashboardLayout';
+import About from '@/Pages/About/About';
+import Contact from '@/Pages/Contact/Contact';
+import AdminHome from '@/Pages/Dashboard/Admin/Home/AdminHome';
+import ManageTasks from '@/Pages/Dashboard/Admin/ManageTasks/ManageTasks';
+import ManageUsers from '@/Pages/Dashboard/Admin/ManageUsers/ManageUsers';
+import AddTaskBuyer from '@/Pages/Dashboard/Buyer/AddTask/AddTask';
+import BuyerHome from '@/Pages/Dashboard/Buyer/Home/BuyerHome';
+import MyTasks from '@/Pages/Dashboard/Buyer/MyTasks/MyTasks';
+import PaymentHistory from '@/Pages/Dashboard/Buyer/PaymentHistory/PaymentHistory';
+import PurchaseCoin from '@/Pages/Dashboard/Buyer/PurchaseCoin/PurchaseCoin';
+import DashboardHome from '@/Pages/Dashboard/Common/DashboardHome';
+import WorkerHome from '@/Pages/Dashboard/Worker/Home/WorkerHome';
+import MySubmission from '@/Pages/Dashboard/Worker/MySubmission/MySubmission';
+import TaskDetails from '@/Pages/Dashboard/Worker/TaskDetails/TaskDetails';
+import TasksList from '@/Pages/Dashboard/Worker/TasksList/TasksList';
+import Withdrawals from '@/Pages/Dashboard/Worker/Withdrawals/Withdrawals';
+import ErrorPage from '@/Pages/Error/ErrorPage';
+import Login from '@/Pages/Login/Login';
+import Register from '@/Pages/Register/Register';
 import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../Layouts/MainLayout';
 import Home from '../Pages/Home/Home';
-import Login from '@/Pages/Login/Login';
-import Register from '@/Pages/Register/Register';
-import DashboardLayout from '@/Layouts/DashboardLayout';
-import PrivateRoute from './PrivateRoute';
-import DashboardHome from '@/Pages/Dashboard/Common/DashboardHome';
-import BuyerHome from '@/Pages/Dashboard/Buyer/Home/BuyerHome';
-import AddTaskBuyer from '@/Pages/Dashboard/Buyer/AddTask/AddTask';
-import MyTasks from '@/Pages/Dashboard/Buyer/MyTasks/MyTasks';
-import WorkerHome from '@/Pages/Dashboard/Worker/Home/WorkerHome';
-import TasksList from '@/Pages/Dashboard/Worker/TasksList/TasksList';
-import TaskDetails from '@/Pages/Dashboard/Worker/TaskDetails/TaskDetails';
-import MySubmission from '@/Pages/Dashboard/Worker/MySubmission/MySubmission';
-import Withdrawals from '@/Pages/Dashboard/Worker/Withdrawals/Withdrawals';
-import BuyerRoute from './BuyerRoute';
-import WorkerRoute from './WorkerRoute';
-import PurchaseCoin from '@/Pages/Dashboard/Buyer/PurchaseCoin/PurchaseCoin';
-import PaymentHistory from '@/Pages/Dashboard/Buyer/PaymentHistory/PaymentHistory';
-import Payment from '@/Components/Dashboard/Buyer/PurchaseCoin/Payment';
 import AdminRoute from './AdminRoute';
-import AdminHome from '@/Pages/Dashboard/Admin/Home/AdminHome';
-import ManageUsers from '@/Pages/Dashboard/Admin/ManageUsers/ManageUsers';
-import ManageTasks from '@/Pages/Dashboard/Admin/ManageTasks/ManageTasks';
-import ErrorPage from '@/Pages/Error/ErrorPage';
-import Contact from '@/Pages/Contact/Contact';
-import About from '@/Pages/About/About';
+import BuyerRoute from './BuyerRoute';
+import PrivateRoute from './PrivateRoute';
+import WorkerRoute from './WorkerRoute';
+import Profile from '@/Components/Dashboard/Shared/Profile/Profile';
 
 
 const routes = createBrowserRouter([
@@ -68,6 +68,10 @@ const routes = createBrowserRouter([
          {
             index: true,
             element: <PrivateRoute><DashboardHome></DashboardHome></PrivateRoute>
+         },
+         {
+            path: 'profile',
+            element: <PrivateRoute><Profile /></PrivateRoute>
          },
          // TODO: Add Buyer Route in this
          // BUYER
