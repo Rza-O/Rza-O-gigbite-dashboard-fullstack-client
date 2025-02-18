@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { NumberTicker } from '@/Components/magicui/number-ticker';
+import { Link } from 'react-router-dom';
 
 const About = () => {
    const stats = [
@@ -26,7 +27,7 @@ const About = () => {
                   GigBite is the go-to platform for micro-task management, connecting businesses with skilled freelancers.
                   Millions of tasks are posted every day, ensuring a vibrant marketplace of innovative ideas.
                </p>
-               <button className="btn btn-primary">Sign Up for Free</button>
+               <Link to={'/login'}><button className="btn bg-primary-dark hover:bg-secondary-light">Sign Up for Free</button></Link>
             </motion.div>
 
             {/* Right Side: Illustration/Image */}
@@ -46,19 +47,18 @@ const About = () => {
 
          {/* Middle Section: Subtitle & Info */}
          <div className="container mx-auto px-6 md:px-6 py-16 text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-content   ">
-               Built for go-to-market teams, powered by AI
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-content">
+               The Fastest Way to Get Micro Tasks Done
             </h2>
             <p className="max-w-3xl mx-auto text-lg text-gray-600">
-               We believe in the power of AI to foster human connections and empower talented professionals
-               to deliver exceptional experiences. Our integrated platform leverages data-driven insights
-               to connect freelancers with tasks that match their expertise, ensuring seamless collaboration
-               and powerful results.
+               GigBite connects you with skilled micro-task workers instantly, ensuring quick turnarounds and
+               high-quality results. Our AI-driven platform matches tasks with the right freelancers, making it
+               easier than ever to get work done efficiently and affordably.
             </p>
          </div>
 
          {/* Stats Section */}
-         <section className="py-12 bg-primary-light">
+         <section className="py-12 bg-secondary-light/10">
             <div className="container mx-auto text-center">
                <h2 className="text-3xl font-lobster font-medium text-secondary-dark mb-4">
                   Make Your Goals Reachable
