@@ -7,6 +7,7 @@ import StartPosting from '@/Components/Home/StartPosting/StartPosting';
 import BestWorkers from '@/Components/Home/BestWorkers/BestWorkers';
 import { Helmet } from 'react-helmet-async';
 import ChartsHome from '@/Components/Home/Charts/ChartsHome';
+import Newsletter from '@/Components/Home/Newsletter/Newsletter';
 
 const Home = () => {
    return (
@@ -20,6 +21,7 @@ const Home = () => {
          <BestWorkers></BestWorkers>
          <NeedSomething></NeedSomething>
          <Testimonial></Testimonial>
+         <Newsletter />
          <FAQ></FAQ>
          <StartPosting></StartPosting>
       </div>
