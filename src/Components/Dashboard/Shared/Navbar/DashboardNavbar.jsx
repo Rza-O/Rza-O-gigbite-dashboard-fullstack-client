@@ -65,15 +65,15 @@ const DashboardNavbar = () => {
                   </label>
                </div>
                <div className=" navbar-end flex-1">
-                  <ul className="menu menu-horizontal flex items-center">
+                  <ul className="menu menu-horizontal flex items-center gap-2">
                      {/* Navbar menu content here */}
 
-                     <div className='hidden lg:flex font-ubuntu'>
-                        <li><a><FaUserAlt className='text-lg' /> <span className='font-semibold'>{userData?.name}</span></a></li>
+                     <div className='hidden lg:flex justify-center items-center font-ubuntu gap-4'>
+                        <a className='flex gap-1'><FaUserAlt className='text-lg' /> <span className='font-semibold'>{userData?.name}</span></a>
 
-                        <li><a><FaUserGear className='text-xl' /> <span className='font-semibold uppercase'>{userData?.role}</span></a></li>
+                        <a className='flex gap-1'><FaUserGear className='text-xl' /> <span className='font-semibold uppercase'>{userData?.role}</span></a>
 
-                        {userData?.role === 'admin' || <li><a>🪙<span className='font-semibold'>{userData?.coin}</span></a></li>}
+                        {userData?.role === 'admin' || <a className='flex gap-1'>🪙<span className='font-semibold'>{userData?.coin}</span></a>}
                      </div>
 
                      {/* avatar */}
@@ -87,10 +87,10 @@ const DashboardNavbar = () => {
                         </div>
                         <ul
                            tabIndex={0}
-                           className=" lg:hidden menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                           className=" lg:hidden menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-5 shadow gap-2">
                            {userData?.role === 'admin' || <li><a>Coin: <span className='font-semibold'>{userData?.coin}🪙</span></a></li>}
-                           <li><a>Name: <span className='font-semibold'>{userData?.name}</span></a></li>
-                           <li><a>Role: <span className='font-semibold'>{userData?.role}</span></a></li>
+                           <a>Name: <span className='font-semibold'>{userData?.name}</span></a>
+                           <a>Role: <span className='font-semibold'>{userData?.role}</span></a>
                         </ul>
                      </div>
 

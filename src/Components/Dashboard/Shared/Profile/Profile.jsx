@@ -41,7 +41,7 @@ const Profile = () => {
             </div>
          </div>
          {/* personal info */}
-         <div className=''>
+         <div className='w-11/12 mx-auto'>
             <div class="my-4 flex flex-col  2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
                <div class="w-full flex flex-col  2xl:w-1/3">
                   <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
