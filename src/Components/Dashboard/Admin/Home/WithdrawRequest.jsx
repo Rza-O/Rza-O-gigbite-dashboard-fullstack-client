@@ -55,7 +55,7 @@ const WithdrawRequest = ({ refetchStats }) => {
                            <td>
                               <button
                                  onClick={() => handleApproval(request?._id)}
-                                 className='btn btn-success'>Approve</button>
+                                 className='btn bg-primary-dark'>Approve</button>
                            </td>
                         </tr>
                      ))}

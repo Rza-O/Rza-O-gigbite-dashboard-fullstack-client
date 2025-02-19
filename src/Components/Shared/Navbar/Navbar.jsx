@@ -46,10 +46,10 @@ const Navbar = () => {
          isActive ? " focus:text-secondary-dark" : "hover:text-secondary-dark"} to={'/contact'}>Contact </NavLink></li>
       <li><NavLink className={({ isActive }) =>
          isActive ? " focus:text-secondary-dark" : "hover:text-secondary-dark"} to='/dashboard'>Dashboard</NavLink></li>
-      <li><NavLink className={({ isActive }) =>
+      <li><NavLink target='_blank' className={({ isActive }) =>
          isActive ? " focus:text-secondary-dark" : "hover:text-secondary-dark"} to='https://github.com/Rza-O/Rza-O-gigbite-dashboard-fullstack-client'>Join as Developer</NavLink></li>
-      <li><NavLink className={({ isActive }) =>
-         isActive ? " focus:text-secondary-dark" : "hover:text-secondary-dark"} to='/dashboard'>🪙{userData?.coin}</NavLink></li>
+      <li><NavLink  className={({ isActive }) =>
+         isActive ? " focus:text-secondary-dark" : "hover:text-secondary-dark"} to='/dashboard/profile'>🪙{userData?.coin}</NavLink></li>
    </>
 
 

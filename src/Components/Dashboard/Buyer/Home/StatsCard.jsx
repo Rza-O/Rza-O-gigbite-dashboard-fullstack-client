@@ -38,8 +38,8 @@ const StatsCard = ({ stats, statsLoading }) => {
          {
             label: 'Total Tasks Added',
             data: [stats?.totalAddedTask],
-            backgroundColor: 'rgba(75, 192, 192, 0.6)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: '#73aede',
+            borderColor: '#c5def2',
             borderWidth: 1,
          },
       ],
@@ -51,8 +51,8 @@ const StatsCard = ({ stats, statsLoading }) => {
       datasets: [
          {
             data: [stats?.pendingWorkerCount, stats?.totalAddedTask - stats?.pendingWorkerCount],
-            backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)'],
-            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+            backgroundColor: ['#73aede', '#d973de'],
+            borderColor: ['#73aede', '#d973de'],
          },
       ],
    };
@@ -64,7 +64,7 @@ const StatsCard = ({ stats, statsLoading }) => {
          {
             label: 'Total Paid (€)',
             data: [stats?.totalPaid - 200, stats?.totalPaid - 150, stats?.totalPaid - 100, stats?.totalPaid - 50, stats?.totalPaid],
-            borderColor: 'rgba(153, 102, 255, 1)',
+            borderColor: '#73aede',
             backgroundColor: 'rgba(153, 102, 255, 0.2)',
             tension: 0.4,
          },

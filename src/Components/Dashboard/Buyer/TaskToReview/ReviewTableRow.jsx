@@ -50,12 +50,12 @@ const ReviewTableRow = ({ singleSubmission, idx, setIsModalOpen, setSubmissionDe
                className='btn btn-outline outline-primary-dark '><MdOutlinePreview className='text-2xl' /></button>
          </td>
          <td className='space-x-4 flex items-center justify-center mt-7 lg:mt-0 xl:block'>
-            <button onClick={handleApprove} className='btn btn-success'>
+            <button onClick={handleApprove} className='btn bg-primary-dark'>
                Approve
             </button>   
             <button
                onClick={handleReject}
-               className='btn btn-error'>
+               className='btn bg-secondary-dark'>
                Reject
             </button>
          </td>
