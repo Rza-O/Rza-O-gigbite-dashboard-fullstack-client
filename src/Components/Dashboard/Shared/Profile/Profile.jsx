@@ -3,6 +3,7 @@ import clouds from '../../../../assets/Cloudy.svg';
 import Loading from '@/Components/Shared/LoadingSpinner/Loading';
 import ProfileEditModal from './ProfileEditModal';
 import { useState } from 'react';
+import { FaUser, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 const Profile = () => {
    const [userData, refetch, isLoading] = useUser();
@@ -45,20 +46,51 @@ const Profile = () => {
 
          {/* Personal Info */}
          <div className="w-11/12 mx-auto">
-            <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
-               <div className="w-full flex flex-col 2xl:w-1/3">
-                  <div className="bg-white rounded-lg shadow-xl p-8">
-                     <h4 className="text-xl text-gray-900 font-bold">Personal Info</h4>
-                     <ul className="mt-2 text-gray-700">
-                        <li className="flex border-y py-2"><span className="font-bold w-24">Full name:</span>{userData?.name}</li>
-                        <li className="flex border-b py-2"><span className="font-bold w-24">Mobile:</span>{userData?.mobile || "Not Available"}</li>
-                        <li className="flex border-b py-2"><span className="font-bold w-24">Email:</span>{userData?.email}</li>
-                        <li className="flex border-b py-2"><span className="font-bold w-24">Location:</span>{userData?.location || "Not Available"}</li>
+            <div className="my-6 flex flex-col 2xl:flex-row gap-6 justify-center items-center">
+               <div className="w-full 2xl:w-1/3">
+                  <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
+                     <h4 className="text-2xl font-semibold text-gray-900 flex items-center gap-2">
+                        <FaUser className="text-blue-500" /> Personal Info
+                     </h4>
+
+                     <ul className="mt-4 text-gray-700">
+                        {/* Full Name */}
+                        <li className="flex items-center gap-3 border-b py-3">
+                           <span className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                              <FaUser className="w-5 h-5" />
+                           </span>
+                           <span className="font-semibold">Full Name:</span> {userData?.name}
+                        </li>
+
+                        {/* Mobile */}
+                        <li className="flex items-center gap-3 border-b py-3">
+                           <span className="w-10 h-10 flex items-center justify-center rounded-full bg-green-100 text-green-600">
+                              <FaPhone className="w-5 h-5" />
+                           </span>
+                           <span className="font-semibold">Mobile:</span> {userData?.mobile || "Not Available"}
+                        </li>
+
+                        {/* Email */}
+                        <li className="flex items-center gap-3 border-b py-3">
+                           <span className="w-10 h-10 flex items-center justify-center rounded-full bg-red-100 text-red-600">
+                              <FaEnvelope className="w-5 h-5" />
+                           </span>
+                           <span className="font-semibold">Email:</span> {userData?.email}
+                        </li>
+
+                        {/* Location */}
+                        <li className="flex items-center gap-3 border-b py-3">
+                           <span className="w-10 h-10 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600">
+                              <FaMapMarkerAlt className="w-5 h-5" />
+                           </span>
+                           <span className="font-semibold">Location:</span> {userData?.location || "Not Available"}
+                        </li>
                      </ul>
                   </div>
                </div>
             </div>
          </div>
+
 
          {/* Edit Modal */}
          {isModalOpen && <ProfileEditModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
