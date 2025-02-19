@@ -17,7 +17,7 @@ const Newsletter = () => {
    return (
       <div className=''>
          {/* <Title heading={'Newsletter'} subHeading={'Always be updated on latest trends'}></Title> */}
-         <div className='w-11/12 lg:container mx-auto rounded-lg px-11 bg-[url("../../../src/assets/Rect-Light.svg")]  bg-cover'>
+         <div className='w-11/12 lg:container mx-auto rounded-lg px-11 bg-[url("/Rect-Light.svg")]  bg-cover'>
             <div className='flex justify-center items-center overflow-hidden'>
                <motion.div
                   initial={{ opacity: 0, x: -40 }}

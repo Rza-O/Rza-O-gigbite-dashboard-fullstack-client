@@ -45,7 +45,7 @@ const ChartsHome = () => {
                initial={{ opacity: 0, x: -40 }}
                whileInView={{ opacity: 1, x: 0 }}
                transition={{ duration: 0.5 }}
-               className="card bg-foreground shadow-lg p-6 bg-[url('../../../src/assets/Curve-Line2.svg')]  bg-contain">
+               className="card bg-foreground shadow-lg p-6 bg-[url('/Curve-Line2.svg')]  bg-contain">
                <div className='card-body'>
                   <h2 className="text-2xl font-bold mb-4">
                      GigBite&apos;s Services?
@@ -65,7 +65,7 @@ const ChartsHome = () => {
                   initial={{ opacity: 0, y: -40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="h-1/2 card bg-foreground shadow-lg p-6 flex flex-col justify-center text-center bg-[url('../../../src/assets/animated-shape.svg')]  bg-cover">
+                  className="h-1/2 card bg-foreground shadow-lg p-6 flex flex-col justify-center text-center bg-[url('/animated-shape.svg')]  bg-cover">
                   <h2 className="text-3xl font-bold text-gray-800">
                      <NumberTicker value={10000} duration={2}></NumberTicker> +
                   </h2>
@@ -78,7 +78,7 @@ const ChartsHome = () => {
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="h-1/2 card bg-foreground shadow-lg p-6 flex flex-col justify-center text-center bg-[url('../../../src/assets/Animated-Shape2.svg')]  bg-cover">
+                  className="h-1/2 card bg-foreground shadow-lg p-6 flex flex-col justify-center text-center bg-[url('/Animated-Shape2.svg')]  bg-cover">
                   <h2 className="text-3xl font-bold text-gray-800">
                      <NumberTicker value={5} duration={2} /> years
                   </h2>
@@ -93,7 +93,7 @@ const ChartsHome = () => {
                initial={{ opacity: 0, x: 40 }}
                whileInView={{ opacity: 1, x: 0 }}
                transition={{ duration: 0.5 }}
-               className="card bg-foreground shadow-lg p-6 bg-[url('../../../src/assets/Curve-Line.svg')]  bg-contain">
+               className="card bg-foreground shadow-lg p-6 bg-[url('/Curve-Line.svg')]  bg-contain">
                <h2 className="text-2xl font-bold mb-4 text-gray-800">
                   Revenue breakdown
                </h2>

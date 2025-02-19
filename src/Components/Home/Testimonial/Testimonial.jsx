@@ -29,7 +29,7 @@ const Testimonial = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{type:'tween', stiffness: 300, duration: 0.3, delay: 0.2}}
-            className='2xl:container w-11/12 mx-auto border rounded-lg shadow-md bg-foreground p-11 bg-[url("../../../src/assets/Curve-Line.svg")]  bg-cover'>
+            className='2xl:container w-11/12 mx-auto border rounded-lg shadow-md bg-foreground p-11 bg-[url("/Curve-Line.svg")]  bg-cover'>
             <Swiper
                pagination={{
                   dynamicBullets: true,

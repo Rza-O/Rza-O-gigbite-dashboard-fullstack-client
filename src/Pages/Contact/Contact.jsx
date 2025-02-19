@@ -13,7 +13,7 @@ const Contact = () => {
 
 
    return (
-      <div className='w-full py-6 flex items-center justify-center  bg-[url("../../../src/assets/Contour_Line.svg")]  bg-cover '>
+      <div className='w-full py-6 flex items-center justify-center  bg-[url("/Contour_Line.svg")]  bg-cover '>
          <div className="container mx-auto flex justify-center items-center">
             <div className="xl:w-1/2 hidden xl:flex ">
                <img src={contactBG} className="w-full h-full object-fill" alt="" />
