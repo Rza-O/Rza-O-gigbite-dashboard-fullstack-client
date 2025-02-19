@@ -1,3 +1,4 @@
+import CredentialsDrawer from '@/Components/Login/CredentialsDrawer';
 import useAuth from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
 import React, { useState } from 'react';
@@ -73,7 +74,37 @@ const Login = () => {
                      A quick and seamless way to manage tasks and earn rewards.
                   </p>
 
+                  <div className='flex justify-center items-center'>
+                     {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                     <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>Users Credentials</button>
+                     <dialog id="my_modal_3" className="modal">
+                        <div className="modal-box">
+                           <form method="dialog">
+                              {/* if there is a button in form, it will close the modal */}
+                              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                           </form>
+                           <div className='space-y-5'>
+                              <div>
+                                 <h2 className="text-lg text-black">Admin Email: shahreza.dev@gmail.com</h2>
+                                 <h2 className="text-lg text-black">Admin Password: HappyCoding01</h2>
+                              </div>
+                              <div>
+                                 <h2 className="text-lg text-black">Buyer Password: martin@gary.com</h2>
+                                 <h2 className="text-lg text-black">Buyer Password: Shann007</h2>
+                              </div>
+                              <div>
+                                 <h2 className="text-lg text-black">Worker Email: john@david.com</h2>
+                                 <h2 className="text-lg text-black">Worker Password: Shann007</h2>
+                              </div>
+                           </div>
+                        </div>
+                     </dialog>
+                  </div>
+
                   {/* google sign in button */}
+                  {/* <div className='flex justify-center items-center'>
+                        <CredentialsDrawer />
+                     </div> */}
                   <div className="mt-8">
                      <button
                         onClick={handleSocialSignIn}
@@ -159,9 +190,9 @@ const Login = () => {
                      </div>
                   </form>
                </div>
-            </div>
-         </section>
-      </div>
+            </div >
+         </section >
+      </div >
    );
 };
 

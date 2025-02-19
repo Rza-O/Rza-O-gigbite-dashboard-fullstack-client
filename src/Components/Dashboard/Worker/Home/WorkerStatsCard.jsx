@@ -102,6 +102,12 @@ const WorkerStatsCard = () => {
 
    return (
       <div className='p-6'>
+         {/* Stats Cards */}
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto my-6">
+            <StatCard title="Total Submission" value={`${isLoading ? 0 : totalSubmission}`} percentage="45.0" isIncrease />
+            <StatCard title="Submission Pending" value={`${isLoading ? 0 : pendingSubmission}`} percentage="12.5" />
+            <StatCard title="Total Earnings" value={`🪙 ${isLoading ? 0 : totalEarnings}`} percentage="35.2" isIncrease />
+         </div>
          {/* Charts Section */}
          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 container mx-auto mb-11">
             {/* Bar Chart */}
@@ -134,12 +140,7 @@ const WorkerStatsCard = () => {
             </div>
          </div>
 
-         {/* Stats Cards */}
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto mt-6">
-            <StatCard title="Total Submission" value={`${isLoading ? 0 : totalSubmission}`} percentage="45.0" isIncrease />
-            <StatCard title="Submission Pending" value={`${isLoading ? 0 : pendingSubmission}`} percentage="12.5" />
-            <StatCard title="Total Earnings" value={`🪙 ${isLoading ? 0 : totalEarnings}`} percentage="35.2" isIncrease />
-         </div>
+
       </div>
    );
 };

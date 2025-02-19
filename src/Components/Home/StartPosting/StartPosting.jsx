@@ -21,7 +21,7 @@ const StartPosting = () => {
             <h1 className='text-5xl font-bold text-primary-content'>Find the talent needed to get your business growing.</h1>
             <p className='font-light'>Advertise your jobs to millions of monthly users and search 15.8 million CVs</p>
             <div className='flex justify-center items-center md:block'>
-               <Link to='/login'><button className='btn bg-secondary'>Start posting job</button></Link>
+               <Link to='/register'><button className='btn bg-secondary'>Start posting job</button></Link>
             </div>
          </motion.div>
       </div>
