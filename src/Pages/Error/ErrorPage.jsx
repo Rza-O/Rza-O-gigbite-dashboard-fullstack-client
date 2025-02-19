@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const ErrorPage = () => {
    return (
       <div className='h-svh flex flex-col items-center justify-center gap-5'>
-         <img src={errorImg} className='w-[700px]' alt="" />
+         <img src={errorImg} className='w-[500px]' alt="" />
          <Link to='/'>
             <InteractiveHoverButton text={'Go Back Home'} className="w-[250px]"></InteractiveHoverButton>
          </Link>
